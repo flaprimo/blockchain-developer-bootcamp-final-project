@@ -5,25 +5,25 @@ import "@openzeppelin/contracts/ownership/Ownable.sol";
 import "./Ticket.sol";
 
 contract Event is Ownable {
-  address organizer
+  address organizer;
   string public name;
   string public description;
-  string public address;
+  string public venue_address;
   uint public start_datetime;
   uint public end_datetime;
-  Ticket[] memory tickets;
+  Ticket[] tickets;
 
   constructor(
     string memory _name,
     string memory _description,
-    string memory _address,
+    string memory _venue_address,
     uint memory _start_datetime,
-    uint memory _end_datetime,
+    uint memory _end_datetime
     ) {
       organizer = owner;
       name = _name;
       description = _description;
-      address = _address;
+      venue_address = _venue_address;
       start_datetime = _start_datetime;
       end_datetime = _end_datetime;
   }
