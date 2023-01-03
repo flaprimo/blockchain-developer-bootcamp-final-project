@@ -30,12 +30,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      # - name: Cache
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ${{ github.workspace }}/frontend/.next/cache
+      #     key: ${{ runner.os }}-nextjs-${{ hashFiles('**/frontend/package-lock.json') }}
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "19"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
       - name: Setup Pages
         uses: actions/configure-pages@v2
+        static_site_generator: next
+        generator_config_file: frontend/next.config.js
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "frontend"
+          path: "frontend/.next"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
