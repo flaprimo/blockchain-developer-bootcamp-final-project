@@ -43,8 +43,9 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
       - name: Setup Pages
         uses: actions/configure-pages@v2
-        static_site_generator: next
-        generator_config_file: frontend/next.config.js
+        with:
+          static_site_generator: next
+          generator_config_file: frontend/next.config.js
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
