@@ -49,8 +49,8 @@ jobs:
       - name: Setup website
         run: |
           cd frontend
-          npm lint
-          npm build
+          npm run lint
+          npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
