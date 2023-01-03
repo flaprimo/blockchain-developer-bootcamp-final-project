@@ -48,6 +48,7 @@ jobs:
           generator_config_file: frontend/next.config.js
       - name: Setup website
         run: |
+          cd frontend
           npm next lint
           npm next build
       - name: Upload artifact
