@@ -49,6 +49,7 @@ jobs:
       - name: Setup website
         run: |
           cd frontend
+          npm install
           npm run lint
           npm run build
       - name: Upload artifact
