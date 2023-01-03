@@ -48,6 +48,8 @@ jobs:
           npm run lint
           npm run build
           npm run export
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
