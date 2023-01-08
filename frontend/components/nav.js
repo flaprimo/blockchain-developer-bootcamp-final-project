@@ -3,13 +3,17 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  BellIcon,
+  XMarkIcon,
+  UserCircleIcon,
+  TicketIcon,
+} from "@heroicons/react/24/outline";
 
 const user = {
   name: "Tom Cook",
   email: "tom@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
 
 const navigation = [
@@ -41,13 +45,22 @@ const Nav = () => {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="flex h-16 items-center justify-between">
                 <div className="flex items-center">
-                  <div className="flex-shrink-0">
+                  <div
+                    className="flex-shrink-0 text-gray-400 hover:text-white"
+                    style={{ cursor: "pointer" }}
+                  >
                     <Link href="/">
-                      <Image
-                        className="h-8 w-8"
-                        src="logo.png"
-                        alt="Your Company"
+                      <TicketIcon
+                        className="block h-8 w-8"
+                        aria-hidden="true"
                       />
+                      {/* <Image
+                        className="h-8 w-8"
+                        src="/logo.png"
+                        alt="Your Company"
+                        height="8"
+                        width="8"
+                      /> */}
                     </Link>
                   </div>
                   <div className="hidden md:block">
@@ -87,11 +100,16 @@ const Nav = () => {
                       <div>
                         <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                           <span className="sr-only">Open user menu</span>
-                          <Image
+                          <UserCircleIcon
+                            className="block h-8 w-8 text-gray-400 hover:text-white"
+                            aria-hidden="true"
+                          />
+                          {/* <Image
                             className="h-8 w-8 rounded-full"
                             src={user.imageUrl}
                             alt=""
-                          />
+                            layout="fill"
+                          /> */}
                         </Menu.Button>
                       </div>
                       <Transition
@@ -164,6 +182,7 @@ const Nav = () => {
                       className="h-10 w-10 rounded-full"
                       src={user.imageUrl}
                       alt=""
+                      layout="fill"
                     />
                   </div>
                   <div className="ml-3">
