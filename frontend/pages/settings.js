@@ -87,8 +87,6 @@ export default function Home() {
                   className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                   type="button"
                   onClick={() => {
-                    setApiKey(apiKey);
-                    setApiNetwork(apiNetwork);
                     appDispatch({
                       type: "set_api_configuration",
                       api_key: apiKey,
