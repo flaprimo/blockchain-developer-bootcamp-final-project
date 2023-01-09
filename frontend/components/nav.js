@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {
@@ -24,7 +24,7 @@ const navigation = [
 const userNavigation = [
   { name: "Your Events", href: "#" },
   { name: "Your Tickets", href: "#" },
-  { name: "Settings", href: "#" },
+  { name: "Settings", href: "settings" },
   { name: "Sign out", href: "#" },
 ];
 
@@ -66,21 +66,24 @@ const Nav = () => {
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
                       {navigation.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
                           href={item.href}
-                          className={
-                            "px-3 py-2 rounded-md text-sm font-medium " +
-                            (pathname == item.href
-                              ? "bg-gray-900 text-white"
-                              : "text-gray-300 hover:bg-gray-700 hover:text-white")
-                          }
                           aria-current={
                             pathname == item.href ? "page" : undefined
                           }
                         >
-                          {item.name}
-                        </a>
+                          <a
+                            className={
+                              "px-3 py-2 rounded-md text-sm font-medium " +
+                              (pathname == item.href
+                                ? "bg-gray-900 text-white"
+                                : "text-gray-300 hover:bg-gray-700 hover:text-white")
+                            }
+                          >
+                            {item.name}
+                          </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -125,15 +128,16 @@ const Nav = () => {
                           {userNavigation.map((item) => (
                             <Menu.Item key={item.name}>
                               {({ active }) => (
-                                <a
-                                  href={item.href}
-                                  className={classNames(
-                                    active ? "bg-gray-100" : "",
-                                    "block px-4 py-2 text-sm text-gray-700"
-                                  )}
-                                >
-                                  {item.name}
-                                </a>
+                                <Link href={item.href}>
+                                  <a
+                                    className={classNames(
+                                      active ? "bg-gray-100" : "",
+                                      "block px-4 py-2 text-sm text-gray-700"
+                                    )}
+                                  >
+                                    {item.name}
+                                  </a>
+                                </Link>
                               )}
                             </Menu.Item>
                           ))}
@@ -162,7 +166,6 @@ const Nav = () => {
                   <Disclosure.Button
                     key={item.name}
                     as="a"
-                    href={item.href}
                     className={classNames(
                       "block px-3 py-2 rounded-md text-base font-medium " +
                         (pathname == item.href
@@ -171,18 +174,18 @@ const Nav = () => {
                     )}
                     aria-current={pathname == item.href ? "page" : undefined}
                   >
-                    {item.name}
+                    <Link href={item.href} style={{ cursor: "pointer" }}>
+                      {item.name}
+                    </Link>
                   </Disclosure.Button>
                 ))}
               </div>
               <div className="border-t border-gray-700 pt-4 pb-3">
                 <div className="flex items-center px-5">
                   <div className="flex-shrink-0">
-                    <Image
-                      className="h-10 w-10 rounded-full"
-                      src={user.imageUrl}
-                      alt=""
-                      layout="fill"
+                    <UserCircleIcon
+                      className="block h-10 w-10 text-gray-400 hover:text-white"
+                      aria-hidden="true"
                     />
                   </div>
                   <div className="ml-3">
@@ -206,10 +209,11 @@ const Nav = () => {
                     <Disclosure.Button
                       key={item.name}
                       as="a"
-                      href={item.href}
                       className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                     >
-                      {item.name}
+                      <Link href={item.href} style={{ cursor: "pointer" }}>
+                        {item.name}
+                      </Link>
                     </Disclosure.Button>
                   ))}
                 </div>
