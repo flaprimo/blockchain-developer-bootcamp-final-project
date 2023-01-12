@@ -1,19 +1,31 @@
 import Head from "next/head";
 // import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import { useEffect, useState } from "react";
 import Nav from "../components/nav";
+import { useAppContext, useAppDispatchContext } from "../context/app_provider";
+import { ethers } from "ethers";
 
 export default function Home() {
+  const appContext = useAppContext();
+  // const appDispatch = useAppDispatchContext();
+
+  // const [balance, setBalance] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      appContext.etherjs.provider.getBalance("").then((balance) => {
+        // convert a currency unit from wei to ether
+        const balanceInEth = ethers.utils.formatEther(balance);
+        console.log(`balance: ${balanceInEth} ETH`);
+      });
+    })();
+  }, []);
+
   return (
     <>
       <Head>
-        <title>Decentralised Ticket Sales</title>
-        <meta
-          name="description"
-          content="A way of managing event tickets in a decentralised fashion using Ethereum blockchain"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="favicon.ico" />
+        <title>Decentralised Ticket Sales | Events</title>
       </Head>
       <Nav />
       <header className="bg-white shadow">

@@ -7,6 +7,12 @@ const initialState = {
   api: {
     key: "",
     network: "goerli",
+    provider: null,
+  },
+  etherjs: {
+    is_signed: false,
+    provider: null,
+    signer: null,
   },
 };
 
@@ -18,6 +24,21 @@ function appReducer(state, action) {
 
       return state;
     }
+    case "set_etherjs": {
+      state.etherjs.is_signed = true;
+      state.etherjs.provider = action.provider;
+      state.etherjs.signer = action.signer;
+
+      return state;
+    }
+    case "unset_etherjs": {
+      state.etherjs.is_signed = false;
+      state.etherjs.provider = null;
+      state.etherjs.signer = null;
+
+      return state;
+    }
+
     // case "added": {
     //   return [
     //     ...state,

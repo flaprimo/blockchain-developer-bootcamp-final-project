@@ -8,7 +8,6 @@ export default function Document() {
         <Head />
         <body className="h-full">
           <div className="min-h-full">
-
             <Main />
 
             {/* <header className="bg-white shadow">

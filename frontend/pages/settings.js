@@ -1,9 +1,51 @@
 import Head from "next/head";
 // import Image from "next/image";
 import { useState } from "react";
+import { ethers } from "ethers";
 import { useAppContext, useAppDispatchContext } from "../context/app_provider";
 import styles from "../styles/Home.module.css";
 import Nav from "../components/nav";
+
+const connectWeb3 = async () => {
+  // https://docs.ethers.org/v5/getting-started/
+  var provider = null;
+  var signer = null;
+
+  if (window.ethereum) {
+    // A Web3Provider wraps a standard Web3 provider, which is
+    // what MetaMask injects as window.ethereum into each page
+    provider = new ethers.providers.Web3Provider(window.ethereum);
+
+    // MetaMask requires requesting permission to connect users accounts
+    await provider.send("eth_requestAccounts", []);
+
+    // The MetaMask plugin also allows signing transactions to
+    // send ether and pay to change state within the blockchain.
+    // For this, you need the account signer...
+  }
+
+  return { provider, signer };
+
+  // try {
+  //   const { ethereum } = window;
+
+  //   if (!ethereum) {
+  //     console.log("Metamask not detected");
+  //     return;
+  //   }
+
+  //   const accounts = await ethereum.request({
+  //     method: "eth_requestAccounts",
+  //   });
+
+  //   setclient({
+  //     isConnected: true,
+  //     address: accounts[0],
+  //   });
+  // } catch (error) {
+  //   console.log("Error connecting to metamask", error);
+  // }
+};
 
 export default function Home() {
   const appContext = useAppContext();
@@ -11,17 +53,15 @@ export default function Home() {
 
   const [apiKey, setApiKey] = useState(appContext.api.key);
   const [apiNetwork, setApiNetwork] = useState(appContext.api.network);
+  const [isSigned, setIsSigned] = useState(appContext.etherjs.is_signed);
+
+  // const [etherjsProvider, setEtherjsProvider] = useState(appContext.etherjs.provider);
+  // const [etherjsSigner, setEtherjsSigner] = useState(appContext.etherjs.signer);
 
   return (
     <>
       <Head>
-        <title>Decentralised Ticket Sales</title>
-        <meta
-          name="description"
-          content="A way of managing event tickets in a decentralised fashion using Ethereum blockchain"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="favicon.ico" />
+        <title>Decentralised Ticket Sales | Settings</title>
       </Head>
       <Nav />
       <header className="bg-white shadow">
@@ -33,10 +73,10 @@ export default function Home() {
       </header>
       <main>
         <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-          <h2 className="tracking-tight text-gray-900 py-8 font-bold">
-            API SQL Alchemy
-          </h2>
           <form className="w-full max-w-sm">
+            <h2 className="tracking-tight text-gray-900 py-8 font-bold">
+              API SQL Alchemy
+            </h2>
             <div className="md:flex md:items-center mb-6">
               <div className="md:w-1/3">
                 <label
@@ -96,6 +136,46 @@ export default function Home() {
                 >
                   Save settings
                 </button>
+              </div>
+            </div>
+          </form>
+          <form>
+            <h2 className="tracking-tight text-gray-900 py-8 font-bold">
+              Metamask
+            </h2>
+            <div className="md:flex md:items-center mb-6">
+              <div>
+                {!isSigned ? (
+                  <button
+                    className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                    type="button"
+                    onClick={() => {
+                      connectWeb3()
+                        .then((data) => {
+                          const { provider, signer } = data;
+                          setIsSigned(true);
+                          appDispatch({
+                            type: "set_etherjs",
+                            provider: provider,
+                            signer: signer,
+                          });
+                        })
+                        .catch((reason) =>
+                          console.log("Message:" + reason.message)
+                        );
+                    }}
+                  >
+                    Sign into Metamask
+                  </button>
+                ) : (
+                  <button
+                    className="shadow bg-gray-500 text-white font-bold py-2 px-4 rounded"
+                    type="button"
+                    disabled
+                  >
+                    Successfully signed-in
+                  </button>
+                )}
               </div>
             </div>
           </form>
