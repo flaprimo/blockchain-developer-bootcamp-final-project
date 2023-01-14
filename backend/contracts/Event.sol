@@ -31,17 +31,16 @@ contract Event is Ownable {
     }
 
     function create_ticket(
-        string memory _name,
-        uint256 _price,
+        // string memory _name,
+        // uint256 _price,
         uint256 _quantity
     ) public onlyOwner {
         address[] memory defaultOperators;
-        Ticket new_ticket = new Ticket(_quantity, defaultOperators);
-        tickets.push(new_ticket);
+        tickets.push(new Ticket(_quantity, defaultOperators));
     }
 
     function delete_event() public onlyOwner {
         // TODO: first reimburse ticket owners
-        selfdestruct(payable(organizer));
+        selfdestruct(payable(organizer.account.address));
     }
 }

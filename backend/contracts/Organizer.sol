@@ -4,15 +4,20 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./Event.sol";
 
 contract Organizer is Ownable {
-    address admin;
+    address public account;
     string public name;
     string public description;
     Event[] events;
 
-    constructor(string memory _name, string memory _description) {
-        admin = owner();
+    constructor(
+        address _account,
+        string memory _name,
+        string memory _description
+    ) {
+        account = _account;
         name = _name;
         description = _description;
+        transferOwnership(_account);
     }
 
     function create_event(
