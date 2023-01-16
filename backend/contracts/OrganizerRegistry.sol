@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./Organizer.sol";
 
 contract OrganizerRegistry is Ownable {
-    Organizer[] organizers;
+    Organizer[] public organizers;
 
     constructor(address[] memory _organizers) {
         for (uint256 i = 0; i < _organizers.length; i++) {
