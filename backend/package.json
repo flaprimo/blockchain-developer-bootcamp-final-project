@@ -1,5 +1,12 @@
 {
+  "name": "backend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "lint": "prettier --list-different 'contracts/**/*.sol'"
+  },
   "devDependencies": {
+    "@openzeppelin/test-environment": "^0.1.9",
     "@openzeppelin/truffle-upgrades": "^1.17.0",
     "chai": "^4.3.7",
     "prettier": "^2.8.3",

@@ -1,44 +1,48 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
+
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./Event.sol";
 
 contract Organizer is Ownable {
-    address public account;
+    address admin;
     string public name;
     string public description;
-    Event[] events;
+    address[] events;
 
-    constructor(
-        address _account,
-        string memory _name,
-        string memory _description
-    ) {
-        account = _account;
+    constructor(address memory _admin, string memory _name, string memory _description) {
+        admin = _admin;
         name = _name;
         description = _description;
-        transferOwnership(_account);
     }
 
-    function create_event(
+    function delete_organizer() external onlyOwner {
+        EventFactoryInterface.delete_events(events);
+        selfdestruct();
+    }
+}
+
+contract OrganizerFactory is Ownable {
+    Organizer[] public organizers;
+
+    function create_organizer(
+        address memory _admin,
         string memory _name,
-        string memory _description,
-        string memory _venue_address,
-        uint256 _start_datetime,
-        uint256 _end_datetime
-    ) public onlyOwner {
-        Event new_event = new Event(
-            address(this),
+        string memory _description
+    ) external onlyOwner returns (address) {
+        Organizer new_organizer = new Organizer(
+            msg.sender,
             _name,
-            _description,
-            _venue_address,
-            _start_datetime,
-            _end_datetime
+            _description
         );
-        events.push(new_event);
+        organizers.push(new_organizer);
+
+        return address(new_organizer);
     }
 
-    function delete_event() public onlyOwner {
-        selfdestruct(payable(owner()));
+    function delete_all_organizers() external onlyOwner {
+        for (uint256 i = 0; i < organizers.length; i++) {
+            organizers[i].delete_organizer();
+        }
     }
 }
