@@ -5,14 +5,6 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./Ticket.sol";
 
 interface EventInterface {
-    address public organizer_address;
-    string public name;
-    string public description;
-    string public venue_address;
-    uint256 public start_datetime;
-    uint256 public end_datetime;
-    address[] public tickets;
-
     function create_ticket(
         string memory _name,
         uint256 _price,
@@ -23,6 +15,14 @@ interface EventInterface {
 }
 
 contract Event is Ownable, EventInterface {
+    address public organizer_address;
+    string public name;
+    string public description;
+    string public venue_address;
+    uint256 public start_datetime;
+    uint256 public end_datetime;
+    address[] public tickets;
+
     constructor(
         address _organizer_address,
         string memory _name,
@@ -56,8 +56,6 @@ contract Event is Ownable, EventInterface {
 }
 
 interface EventFactoryInterface {
-    address[] public events;
-
     function create_event() external returns (address);
 
     function delete_events(address[] _events) external;
@@ -66,6 +64,8 @@ interface EventFactoryInterface {
 }
 
 contract EventFactory is Ownable, EventFactoryInterface {
+    address[] public events;
+
     function create_event(
         string memory _name,
         string memory _description,

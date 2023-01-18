@@ -23,8 +23,6 @@ contract Ticket is ERC1155, Ownable {
 }
 
 interface TicketFactoryInterface {
-    address[] public tickets;
-
     function create_ticket() external returns (address);
 
     function delete_tickets(address[] _tickets) external;
@@ -33,6 +31,8 @@ interface TicketFactoryInterface {
 }
 
 contract TicketFactory is Ownable, TicketFactoryInterface {
+    address[] public tickets;
+
     function create_ticket(
         string memory _name,
         string memory _description,
