@@ -4,21 +4,49 @@ pragma solidity ^0.8.17;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./Event.sol";
 
+interface OrganizerInterface {
+    function create_ticket(
+        string memory _name,
+        uint256 _price,
+        uint256 _quantity
+    ) external;
+
+    function delete_event() external;
+
+    function get_admin() external pure returns (address);
+}
+
 contract Organizer is Ownable {
     address admin;
     string public name;
     string public description;
     address[] events;
 
-    constructor(address memory _admin, string memory _name, string memory _description) {
+    constructor(
+        address _admin,
+        string memory _name,
+        string memory _description
+    ) {
         admin = _admin;
         name = _name;
         description = _description;
     }
 
-    function delete_organizer() external onlyOwner {
+    function withdraw() external {
+        require(msg.sender == admin, "Only the admin can delete an Organizer");
+        uint256 amount = address(this).balance;
+        require(amount > 0, "Insufficient funds");
+        payable(admin).transfer(amount);
+    }
+
+    function delete_organizer() external {
+        require(msg.sender == admin, "Only the admin can delete an Organizer");
         EventFactoryInterface.delete_events(events);
-        selfdestruct();
+        selfdestruct(payable(admin));
+    }
+
+    function get_admin() external pure returns (address) {
+        return admin;
     }
 }
 
@@ -26,7 +54,7 @@ contract OrganizerFactory is Ownable {
     Organizer[] public organizers;
 
     function create_organizer(
-        address memory _admin,
+        address _admin,
         string memory _name,
         string memory _description
     ) external onlyOwner returns (address) {

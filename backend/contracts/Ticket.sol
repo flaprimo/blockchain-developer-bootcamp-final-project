@@ -4,74 +4,84 @@ pragma solidity ^0.8.17;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 
+interface TicketInterface {
+    function buy_ticket(
+        address _buyer,
+        address _organizer_address,
+        uint256 _quantity
+    ) external payable;
+
+    function delete_ticket() external;
+}
+
 contract Ticket is ERC1155, Ownable {
     address public event_address;
     address public organizer_address;
     string public name;
+    uint256 public quantity;
+    uint256 public price;
 
     constructor(
         address _event_address,
         address _organizer_address,
-        string _name,
-        uint256 _initial_supply
-    ) ERC1155() {
+        string memory _name,
+        uint256 _initial_supply,
+        uint256 _price
+    ) ERC1155("") {
         event_address = _event_address;
         organizer_address = _organizer_address;
         name = _name;
-        _mint(_organizer_address, _name, _initial_supply, "");
+        quantity = _initial_supply;
+        price = _price;
+        _mint(address(this), 0, _initial_supply, "");
+    }
+
+    function buy_ticket(address _organizer_address, uint256 _quantity)
+        external
+        payable
+    {
+        uint256 total_price = quantity * price;
+        require(
+            balanceOf(address(this), 0) >= _quantity,
+            "Not enough token available to buy"
+        );
+        require(
+            msg.sender.balance >= total_price,
+            "Buyer doesn't have enough Ether"
+        );
+        require(msg.value == total_price, "Buyer isn't paying enough");
+        // payable(account).transfer(total_price);
+        // safeTransferFrom(msg.sender, address(this), AliAPIToken, 100, "");
+        _safeTransferFrom(address(this), msg.sender, 0, _quantity, "");
+        quantity -= _quantity;
+    }
+
+    function delete_ticket() external onlyOwner {
+        selfdestruct(payable(organizer_address));
     }
 }
 
 interface TicketFactoryInterface {
     function create_ticket() external returns (address);
-
-    function delete_tickets(address[] _tickets) external;
-
-    function delete_all_tickets() external;
 }
 
 contract TicketFactory is Ownable, TicketFactoryInterface {
-    address[] public tickets;
-
     function create_ticket(
+        address _event_address,
+        address _organizer_address,
         string memory _name,
-        string memory _description,
-        string memory _venue_address,
-        uint256 _start_datetime,
-        uint256 _end_datetime
+        uint256 _initial_supply,
+        uint256 _price
     ) external onlyOwner returns (address) {
         Ticket new_ticket = new Ticket(
-            msg.sender,
+            _event_address,
+            _organizer_address,
             _name,
-            _description,
-            _venue_address,
-            _start_datetime,
-            _end_datetime
+            _initial_supply,
+            _price
         );
         address new_ticket_address = address(new_ticket);
-        tickets.push(new_ticket_address);
 
         return new_ticket_address;
-    }
-
-    function delete_tickets(address[] _tickets) external onlyOwner {
-        uint256 j;
-        for (uint256 i = 0; i < _tickets.length; i++) {
-            j = 0;
-            address current_ticket = tickets[i];
-            while (tickets[j] != current_ticket && i < tickets.length) {
-                j++;
-            }
-            if (tickets[j] == current_ticket) {
-                TicketInterface(tickets[j]).delete_ticket();
-                tickets[j].pop();
-            }
-        }
-    }
-
-    function delete_all_tickets() external onlyOwner {
-        for (uint256 i = 0; i < tickets.length; i++) {
-            TicketInterface(tickets[i]).delete_ticket();
-        }
     }
 }

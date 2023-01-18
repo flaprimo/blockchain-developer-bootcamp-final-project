@@ -2,6 +2,7 @@
 pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 import "./Ticket.sol";
 
 interface EventInterface {
@@ -31,7 +32,7 @@ contract Event is Ownable, EventInterface {
         uint256 _start_datetime,
         uint256 _end_datetime
     ) {
-        organizer = _organizer_address;
+        organizer_address = _organizer_address;
         name = _name;
         description = _description;
         venue_address = _venue_address;
@@ -41,24 +42,30 @@ contract Event is Ownable, EventInterface {
 
     function create_ticket(
         string memory _name,
-        uint256 _price,
-        uint256 _quantity
+        uint256 _initial_supply,
+        uint256 _price
     ) external onlyOwner {
-        address[] memory defaultOperators;
-        Ticket new_ticket = new Ticket(_quantity, defaultOperators);
+        Ticket new_ticket = new Ticket(
+            address(this),
+            organizer_address,
+            _name,
+            _initial_supply,
+            _price);
         tickets.push(address(new_ticket));
     }
 
     function delete_event() external onlyOwner {
-        TicketFactoryInterface.delete_tickets(tickets);
-        selfdestruct();
+        for (uint256 i = 0; i < tickets.length; i++) {
+            TicketInterface(tickets[i]).delete_ticket();
+        }
+        selfdestruct(payable(organizer_address));
     }
 }
 
 interface EventFactoryInterface {
     function create_event() external returns (address);
 
-    function delete_events(address[] _events) external;
+    function delete_events(address[] memory _events) external;
 
     function delete_all_events() external;
 }
@@ -87,19 +94,27 @@ contract EventFactory is Ownable, EventFactoryInterface {
         return new_event_address;
     }
 
-    function delete_events(address[] _events) external onlyOwner {
+    function delete_events(address[] memory _events) external onlyOwner {
         uint256 j;
         for (uint256 i = 0; i < _events.length; i++) {
-            j = 0;
-            address current_event = events[i];
-            while (events[j] != current_event && i < events.length) {
-                j++;
-            }
-            if (events[j] == current_event) {
-                EventInterface(events[j]).delete_event();
-                events[j].pop();
-            }
+            j = get_index_by_value(events[i]);
+
+            EventInterface(events[j]).delete_event();
+            remove_from_array(j);
         }
+    }
+
+    function get_index_by_value(address value) internal returns (uint256) {
+        uint256 i = 0;
+        while (events[i] != value && i < events.length) {
+            i++;
+        }
+        return i;
+    }
+
+    function remove_from_array(uint256 index) internal {
+        events[index] = events[events.length - 1];
+        events.pop();
     }
 
     function delete_all_events() external onlyOwner {
