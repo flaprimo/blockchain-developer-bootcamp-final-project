@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
-import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/utils/CountersUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
 import "./Event.sol";
 
 interface ITicket {
@@ -34,8 +34,8 @@ interface ITicket {
         returns (uint256);
 }
 
-contract Ticket is ITicket, ERC1155, Ownable {
-    Counters.Counter ticket_id;
+contract Ticket is ITicket, ERC1155Upgradeable, OwnableUpgradeable {
+    CountersUpgradeable.Counter ticket_id;
     mapping(address => mapping(uint256 => mapping(uint256 => TicketStruct)))
         public tickets;
     uint256[] public ticket_list;
@@ -55,7 +55,11 @@ contract Ticket is ITicket, ERC1155, Ownable {
         uint256 _price
     );
 
-    constructor() ERC1155("") {}
+    // constructor() ERC1155("") {}
+
+    function initialize() public initializer {
+        __ERC1155_init("");
+    }
 
     // Functions
     function create_ticket(
@@ -74,18 +78,23 @@ contract Ticket is ITicket, ERC1155, Ownable {
         //     "Event is passed"
         // );
         tickets[msg.sender][_event_id][
-            Counters.current(ticket_id)
+            CountersUpgradeable.current(ticket_id)
         ] = TicketStruct(_name, _price, true);
-        ticket_list.push(Counters.current(ticket_id));
-        _mint(address(this), Counters.current(ticket_id), _quantity, "");
+        ticket_list.push(CountersUpgradeable.current(ticket_id));
+        _mint(
+            address(this),
+            CountersUpgradeable.current(ticket_id),
+            _quantity,
+            ""
+        );
         emit TicketCreated(
             msg.sender,
-            Counters.current(ticket_id),
+            CountersUpgradeable.current(ticket_id),
             _name,
             _quantity,
             _price
         );
-        Counters.increment(ticket_id);
+        CountersUpgradeable.increment(ticket_id);
     }
 
     function buy_ticket(

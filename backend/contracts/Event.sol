@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/utils/CountersUpgradeable.sol";
 import "./Organizer.sol";
 
 interface IEvent {
@@ -30,8 +30,8 @@ interface IEvent {
         returns (bool);
 }
 
-contract Event is IEvent, Ownable {
-    Counters.Counter event_id;
+contract Event is IEvent, OwnableUpgradeable {
+    CountersUpgradeable.Counter event_id;
     mapping(address => mapping(uint256 => EventStruct)) public events;
     uint256[] public event_list;
 
@@ -45,7 +45,7 @@ contract Event is IEvent, Ownable {
         uint256 _end_datetime
     );
 
-    constructor() {}
+    // constructor() {}
 
     // Functions
     function create_event(
@@ -64,7 +64,7 @@ contract Event is IEvent, Ownable {
             _start_datetime < _end_datetime && _end_datetime < block.timestamp,
             "Wrong datetime passed"
         );
-        events[msg.sender][Counters.current(event_id)] = EventStruct(
+        events[msg.sender][CountersUpgradeable.current(event_id)] = EventStruct(
             _name,
             _description,
             _venue_address,
@@ -72,17 +72,17 @@ contract Event is IEvent, Ownable {
             _end_datetime,
             true
         );
-        event_list.push(Counters.current(event_id));
+        event_list.push(CountersUpgradeable.current(event_id));
         emit EventCreated(
             msg.sender,
-            Counters.current(event_id),
+            CountersUpgradeable.current(event_id),
             _name,
             _description,
             _venue_address,
             _start_datetime,
             _end_datetime
         );
-        Counters.increment(event_id);
+        CountersUpgradeable.increment(event_id);
     }
 
     function is_event(address _organizer_address, uint256 _event_id)

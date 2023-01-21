@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 interface IOrganizer {
     struct OrganizerStruct {
@@ -19,7 +19,7 @@ interface IOrganizer {
         returns (bool);
 }
 
-contract Organizer is IOrganizer, Ownable {
+contract Organizer is IOrganizer, OwnableUpgradeable {
     mapping(address => OrganizerStruct) public organizers;
     address[] public organizer_list;
 
@@ -29,7 +29,7 @@ contract Organizer is IOrganizer, Ownable {
         string _description
     );
 
-    constructor() {}
+    // constructor() {}
 
     modifier organizerNotExists() {
         require(
