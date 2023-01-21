@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "./Event.sol";
 
-interface TicketInterface {
+interface ITicket {
     struct TicketStruct {
         string name;
         uint256 price;
@@ -34,10 +34,11 @@ interface TicketInterface {
         returns (uint256);
 }
 
-contract Ticket is TicketInterface, ERC1155, Ownable {
+contract Ticket is ITicket, ERC1155, Ownable {
     Counters.Counter ticket_id;
     mapping(address => mapping(uint256 => mapping(uint256 => TicketStruct)))
         public tickets;
+    uint256[] public ticket_list;
 
     event TicketCreated(
         address indexed _admin,
@@ -65,7 +66,7 @@ contract Ticket is TicketInterface, ERC1155, Ownable {
         uint256 _price
     ) external {
         require(
-            EventInterface(_event_contract).is_event(msg.sender, _event_id),
+            IEvent(_event_contract).is_event(msg.sender, _event_id),
             "Event does not exist"
         );
         // require(
@@ -75,6 +76,7 @@ contract Ticket is TicketInterface, ERC1155, Ownable {
         tickets[msg.sender][_event_id][
             Counters.current(ticket_id)
         ] = TicketStruct(_name, _price, true);
+        ticket_list.push(Counters.current(ticket_id));
         _mint(address(this), Counters.current(ticket_id), _quantity, "");
         emit TicketCreated(
             msg.sender,

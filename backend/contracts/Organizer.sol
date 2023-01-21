@@ -3,7 +3,7 @@ pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-interface OrganizerInterface {
+interface IOrganizer {
     struct OrganizerStruct {
         string name;
         string description;
@@ -19,8 +19,9 @@ interface OrganizerInterface {
         returns (bool);
 }
 
-contract Organizer is OrganizerInterface, Ownable {
+contract Organizer is IOrganizer, Ownable {
     mapping(address => OrganizerStruct) public organizers;
+    address[] public organizer_list;
 
     event OrganizerCreated(
         address indexed _admin,
@@ -44,6 +45,7 @@ contract Organizer is OrganizerInterface, Ownable {
         organizerNotExists
     {
         organizers[msg.sender] = OrganizerStruct(_name, _description, true);
+        organizer_list.push(msg.sender);
         emit OrganizerCreated(msg.sender, _name, _description);
     }
 

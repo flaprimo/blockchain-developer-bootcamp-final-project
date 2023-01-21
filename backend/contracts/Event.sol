@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "./Organizer.sol";
 
-interface EventInterface {
+interface IEvent {
     struct EventStruct {
         string name;
         string description;
@@ -30,9 +30,10 @@ interface EventInterface {
         returns (bool);
 }
 
-contract Event is EventInterface, Ownable {
+contract Event is IEvent, Ownable {
     Counters.Counter event_id;
     mapping(address => mapping(uint256 => EventStruct)) public events;
+    uint256[] public event_list;
 
     event EventCreated(
         address indexed _admin,
@@ -56,7 +57,7 @@ contract Event is EventInterface, Ownable {
         uint256 _end_datetime
     ) external {
         require(
-            OrganizerInterface(_organizer_contract).is_organizer(msg.sender),
+            IOrganizer(_organizer_contract).is_organizer(msg.sender),
             "Organizer does not exist"
         );
         require(
@@ -71,6 +72,7 @@ contract Event is EventInterface, Ownable {
             _end_datetime,
             true
         );
+        event_list.push(Counters.current(event_id));
         emit EventCreated(
             msg.sender,
             Counters.current(event_id),
