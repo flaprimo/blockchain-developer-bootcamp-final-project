@@ -2,75 +2,56 @@
 pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./Event.sol";
 
 interface OrganizerInterface {
-    function create_ticket(
-        string memory _name,
-        uint256 _price,
-        uint256 _quantity
-    ) external;
+    struct OrganizerStruct {
+        string name;
+        string description;
+        bool is_set;
+    }
 
-    function delete_event() external;
+    function create_organizer(string memory _name, string memory _description)
+        external;
 
-    function get_admin() external pure returns (address);
+    function is_organizer(address _organizer_address)
+        external
+        view
+        returns (bool);
 }
 
-contract Organizer is Ownable {
-    address admin;
-    string public name;
-    string public description;
-    address[] events;
+contract Organizer is OrganizerInterface, Ownable {
+    mapping(address => OrganizerStruct) public organizers;
 
-    constructor(
-        address _admin,
-        string memory _name,
-        string memory _description
-    ) {
-        admin = _admin;
-        name = _name;
-        description = _description;
-    }
+    event OrganizerCreated(
+        address indexed _admin,
+        string _name,
+        string _description
+    );
 
-    function withdraw() external {
-        require(msg.sender == admin, "Only the admin can delete an Organizer");
-        uint256 amount = address(this).balance;
-        require(amount > 0, "Insufficient funds");
-        payable(admin).transfer(amount);
-    }
+    constructor() {}
 
-    function delete_organizer() external {
-        require(msg.sender == admin, "Only the admin can delete an Organizer");
-        EventFactoryInterface.delete_events(events);
-        selfdestruct(payable(admin));
-    }
-
-    function get_admin() external pure returns (address) {
-        return admin;
-    }
-}
-
-contract OrganizerFactory is Ownable {
-    Organizer[] public organizers;
-
-    function create_organizer(
-        address _admin,
-        string memory _name,
-        string memory _description
-    ) external onlyOwner returns (address) {
-        Organizer new_organizer = new Organizer(
-            msg.sender,
-            _name,
-            _description
+    modifier organizerNotExists() {
+        require(
+            !organizers[msg.sender].is_set,
+            "Sender is already an organizer"
         );
-        organizers.push(new_organizer);
-
-        return address(new_organizer);
+        _;
     }
 
-    function delete_all_organizers() external onlyOwner {
-        for (uint256 i = 0; i < organizers.length; i++) {
-            organizers[i].delete_organizer();
-        }
+    // Functions
+    function create_organizer(string memory _name, string memory _description)
+        external
+        organizerNotExists
+    {
+        organizers[msg.sender] = OrganizerStruct(_name, _description, true);
+        emit OrganizerCreated(msg.sender, _name, _description);
+    }
+
+    function is_organizer(address _organizer_address)
+        external
+        view
+        returns (bool)
+    {
+        return organizers[_organizer_address].is_set;
     }
 }

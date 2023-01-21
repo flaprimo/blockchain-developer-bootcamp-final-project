@@ -1,0 +1,1332 @@
+{
+  "contractName": "OrganizerInterface",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_description",
+          "type": "string"
+        }
+      ],
+      "name": "create_organizer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_organizer_address",
+          "type": "address"
+        }
+      ],
+      "name": "is_organizer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"}],\"name\":\"create_organizer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_organizer_address\",\"type\":\"address\"}],\"name\":\"is_organizer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Organizer.sol\":\"OrganizerInterface\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0xa94b34880e3c1b0b931662cb1c09e5dfa6662f31cba80e07c5ee71cd135c9673\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://40fb1b5102468f783961d0af743f91b9980cf66b50d1d12009f6bb1869cea4d2\",\"dweb:/ipfs/QmYqEbJML4jB1GHbzD4cUZDtJg5wVwNm3vDJq1GbyDus8y\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92\",\"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3\"]},\"project:/contracts/Organizer.sol\":{\"keccak256\":\"0x65cb2e09c47c295bc63b82157dd528d9285f9a5ea0b70e61f171ed44ee5a110e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7addfd9f3a662197df514d86af7ff2bdf32d7236191aa19d22352c9297e4f620\",\"dweb:/ipfs/QmPdRZAmN9Lbfp3rX878BqH7ciFGyx8G5NEm3a8jmQ7Akk\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.17;\n\nimport \"@openzeppelin/contracts/access/Ownable.sol\";\n\ninterface OrganizerInterface {\n    struct OrganizerStruct {\n        string name;\n        string description;\n        bool is_set;\n    }\n\n    function create_organizer(string memory _name, string memory _description)\n        external;\n\n    function is_organizer(address _organizer_address)\n        external\n        view\n        returns (bool);\n}\n\ncontract Organizer is OrganizerInterface, Ownable {\n    mapping(address => OrganizerStruct) public organizers;\n\n    event OrganizerCreated(\n        address indexed _admin,\n        string _name,\n        string _description\n    );\n\n    constructor() {}\n\n    modifier organizerNotExists() {\n        require(\n            !organizers[msg.sender].is_set,\n            \"Sender is already an organizer\"\n        );\n        _;\n    }\n\n    // Functions\n    function create_organizer(string memory _name, string memory _description)\n        external\n        organizerNotExists\n    {\n        organizers[msg.sender] = OrganizerStruct(_name, _description, true);\n        emit OrganizerCreated(msg.sender, _name, _description);\n    }\n\n    function is_organizer(address _organizer_address)\n        external\n        view\n        returns (bool)\n    {\n        return organizers[_organizer_address].is_set;\n    }\n}\n",
+  "sourcePath": "/home/flaprimo/Development/decentralized-ticket-sales/backend/contracts/Organizer.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/Organizer.sol",
+    "exportedSymbols": {
+      "Context": [
+        1865
+      ],
+      "Organizer": [
+        2250
+      ],
+      "OrganizerInterface": [
+        2173
+      ],
+      "Ownable": [
+        112
+      ]
+    },
+    "id": 2251,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2150,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".17"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:24:11"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts/access/Ownable.sol",
+        "file": "@openzeppelin/contracts/access/Ownable.sol",
+        "id": 2151,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 2251,
+        "sourceUnit": 113,
+        "src": "58:52:11",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "OrganizerInterface",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 2173,
+        "linearizedBaseContracts": [
+          2173
+        ],
+        "name": "OrganizerInterface",
+        "nameLocation": "122:18:11",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "OrganizerInterface.OrganizerStruct",
+            "id": 2158,
+            "members": [
+              {
+                "constant": false,
+                "id": 2153,
+                "mutability": "mutable",
+                "name": "name",
+                "nameLocation": "187:4:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 2158,
+                "src": "180:11:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 2152,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "180:6:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2155,
+                "mutability": "mutable",
+                "name": "description",
+                "nameLocation": "208:11:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 2158,
+                "src": "201:18:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 2154,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "201:6:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2157,
+                "mutability": "mutable",
+                "name": "is_set",
+                "nameLocation": "234:6:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 2158,
+                "src": "229:11:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 2156,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "229:4:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "OrganizerStruct",
+            "nameLocation": "154:15:11",
+            "nodeType": "StructDefinition",
+            "scope": 2173,
+            "src": "147:100:11",
+            "visibility": "public"
+          },
+          {
+            "functionSelector": "006e4c85",
+            "id": 2165,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "create_organizer",
+            "nameLocation": "262:16:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2163,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2160,
+                  "mutability": "mutable",
+                  "name": "_name",
+                  "nameLocation": "293:5:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2165,
+                  "src": "279:19:11",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2159,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "279:6:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2162,
+                  "mutability": "mutable",
+                  "name": "_description",
+                  "nameLocation": "314:12:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2165,
+                  "src": "300:26:11",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2161,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "300:6:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "278:49:11"
+            },
+            "returnParameters": {
+              "id": 2164,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "344:0:11"
+            },
+            "scope": 2173,
+            "src": "253:92:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "ee23e2be",
+            "id": 2172,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "is_organizer",
+            "nameLocation": "360:12:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2168,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2167,
+                  "mutability": "mutable",
+                  "name": "_organizer_address",
+                  "nameLocation": "381:18:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2172,
+                  "src": "373:26:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2166,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "373:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "372:28:11"
+            },
+            "returnParameters": {
+              "id": 2171,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2170,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2172,
+                  "src": "448:4:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 2169,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "448:4:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "447:6:11"
+            },
+            "scope": 2173,
+            "src": "351:103:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2251,
+        "src": "112:344:11",
+        "usedErrors": []
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 2174,
+              "name": "OrganizerInterface",
+              "nameLocations": [
+                "480:18:11"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 2173,
+              "src": "480:18:11"
+            },
+            "id": 2175,
+            "nodeType": "InheritanceSpecifier",
+            "src": "480:18:11"
+          },
+          {
+            "baseName": {
+              "id": 2176,
+              "name": "Ownable",
+              "nameLocations": [
+                "500:7:11"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 112,
+              "src": "500:7:11"
+            },
+            "id": 2177,
+            "nodeType": "InheritanceSpecifier",
+            "src": "500:7:11"
+          }
+        ],
+        "canonicalName": "Organizer",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 2250,
+        "linearizedBaseContracts": [
+          2250,
+          112,
+          1865,
+          2173
+        ],
+        "name": "Organizer",
+        "nameLocation": "467:9:11",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "0544c5b9",
+            "id": 2182,
+            "mutability": "mutable",
+            "name": "organizers",
+            "nameLocation": "557:10:11",
+            "nodeType": "VariableDeclaration",
+            "scope": 2250,
+            "src": "514:53:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_OrganizerStruct_$2158_storage_$",
+              "typeString": "mapping(address => struct OrganizerInterface.OrganizerStruct)"
+            },
+            "typeName": {
+              "id": 2181,
+              "keyType": {
+                "id": 2178,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "522:7:11",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "514:35:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_OrganizerStruct_$2158_storage_$",
+                "typeString": "mapping(address => struct OrganizerInterface.OrganizerStruct)"
+              },
+              "valueType": {
+                "id": 2180,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 2179,
+                  "name": "OrganizerStruct",
+                  "nameLocations": [
+                    "533:15:11"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 2158,
+                  "src": "533:15:11"
+                },
+                "referencedDeclaration": 2158,
+                "src": "533:15:11",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_OrganizerStruct_$2158_storage_ptr",
+                  "typeString": "struct OrganizerInterface.OrganizerStruct"
+                }
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "eventSelector": "53d3042b99dbed472c43c3db1f8e52b67f4190a208f45ee664b70cbadad21188",
+            "id": 2190,
+            "name": "OrganizerCreated",
+            "nameLocation": "580:16:11",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2189,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2184,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_admin",
+                  "nameLocation": "622:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2190,
+                  "src": "606:22:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2183,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "606:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2186,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_name",
+                  "nameLocation": "645:5:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2190,
+                  "src": "638:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2185,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "638:6:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2188,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_description",
+                  "nameLocation": "667:12:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2190,
+                  "src": "660:19:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2187,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "660:6:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "596:89:11"
+            },
+            "src": "574:112:11"
+          },
+          {
+            "body": {
+              "id": 2193,
+              "nodeType": "Block",
+              "src": "706:2:11",
+              "statements": []
+            },
+            "id": 2194,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2191,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "703:2:11"
+            },
+            "returnParameters": {
+              "id": 2192,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "706:0:11"
+            },
+            "scope": 2250,
+            "src": "692:16:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2207,
+              "nodeType": "Block",
+              "src": "744:135:11",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 2202,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "UnaryOperation",
+                        "operator": "!",
+                        "prefix": true,
+                        "src": "775:30:11",
+                        "subExpression": {
+                          "expression": {
+                            "baseExpression": {
+                              "id": 2197,
+                              "name": "organizers",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2182,
+                              "src": "776:10:11",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_OrganizerStruct_$2158_storage_$",
+                                "typeString": "mapping(address => struct OrganizerInterface.OrganizerStruct storage ref)"
+                              }
+                            },
+                            "id": 2200,
+                            "indexExpression": {
+                              "expression": {
+                                "id": 2198,
+                                "name": "msg",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 4294967281,
+                                "src": "787:3:11",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_magic_message",
+                                  "typeString": "msg"
+                                }
+                              },
+                              "id": 2199,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberLocation": "791:6:11",
+                              "memberName": "sender",
+                              "nodeType": "MemberAccess",
+                              "src": "787:10:11",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "776:22:11",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_OrganizerStruct_$2158_storage",
+                              "typeString": "struct OrganizerInterface.OrganizerStruct storage ref"
+                            }
+                          },
+                          "id": 2201,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "799:6:11",
+                          "memberName": "is_set",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 2157,
+                          "src": "776:29:11",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "53656e64657220697320616c726561647920616e206f7267616e697a6572",
+                        "id": 2203,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "819:32:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_2f77f65c16e8eaa4edddb5a35d8d42c480e01d697cf085a1092c89b1abd693fa",
+                          "typeString": "literal_string \"Sender is already an organizer\""
+                        },
+                        "value": "Sender is already an organizer"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_2f77f65c16e8eaa4edddb5a35d8d42c480e01d697cf085a1092c89b1abd693fa",
+                          "typeString": "literal_string \"Sender is already an organizer\""
+                        }
+                      ],
+                      "id": 2196,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "754:7:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 2204,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "754:107:11",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2205,
+                  "nodeType": "ExpressionStatement",
+                  "src": "754:107:11"
+                },
+                {
+                  "id": 2206,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "871:1:11"
+                }
+              ]
+            },
+            "id": 2208,
+            "name": "organizerNotExists",
+            "nameLocation": "723:18:11",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 2195,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "741:2:11"
+            },
+            "src": "714:165:11",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "baseFunctions": [
+              2165
+            ],
+            "body": {
+              "id": 2235,
+              "nodeType": "Block",
+              "src": "1025:148:11",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 2226,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 2217,
+                        "name": "organizers",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2182,
+                        "src": "1035:10:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_OrganizerStruct_$2158_storage_$",
+                          "typeString": "mapping(address => struct OrganizerInterface.OrganizerStruct storage ref)"
+                        }
+                      },
+                      "id": 2220,
+                      "indexExpression": {
+                        "expression": {
+                          "id": 2218,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967281,
+                          "src": "1046:3:11",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 2219,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "1050:6:11",
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "src": "1046:10:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1035:22:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_OrganizerStruct_$2158_storage",
+                        "typeString": "struct OrganizerInterface.OrganizerStruct storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "arguments": [
+                        {
+                          "id": 2222,
+                          "name": "_name",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2210,
+                          "src": "1076:5:11",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        },
+                        {
+                          "id": 2223,
+                          "name": "_description",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2212,
+                          "src": "1083:12:11",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        },
+                        {
+                          "hexValue": "74727565",
+                          "id": 2224,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "bool",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1097:4:11",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "value": "true"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          },
+                          {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          },
+                          {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        ],
+                        "id": 2221,
+                        "name": "OrganizerStruct",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2158,
+                        "src": "1060:15:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_OrganizerStruct_$2158_storage_ptr_$",
+                          "typeString": "type(struct OrganizerInterface.OrganizerStruct storage pointer)"
+                        }
+                      },
+                      "id": 2225,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1060:42:11",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_OrganizerStruct_$2158_memory_ptr",
+                        "typeString": "struct OrganizerInterface.OrganizerStruct memory"
+                      }
+                    },
+                    "src": "1035:67:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_OrganizerStruct_$2158_storage",
+                      "typeString": "struct OrganizerInterface.OrganizerStruct storage ref"
+                    }
+                  },
+                  "id": 2227,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1035:67:11"
+                },
+                {
+                  "eventCall": {
+                    "arguments": [
+                      {
+                        "expression": {
+                          "id": 2229,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967281,
+                          "src": "1134:3:11",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 2230,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "1138:6:11",
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "src": "1134:10:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "id": 2231,
+                        "name": "_name",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2210,
+                        "src": "1146:5:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      {
+                        "id": 2232,
+                        "name": "_description",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2212,
+                        "src": "1153:12:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      ],
+                      "id": 2228,
+                      "name": "OrganizerCreated",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2190,
+                      "src": "1117:16:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (address,string memory,string memory)"
+                      }
+                    },
+                    "id": 2233,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1117:49:11",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2234,
+                  "nodeType": "EmitStatement",
+                  "src": "1112:54:11"
+                }
+              ]
+            },
+            "functionSelector": "006e4c85",
+            "id": 2236,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 2215,
+                "kind": "modifierInvocation",
+                "modifierName": {
+                  "id": 2214,
+                  "name": "organizerNotExists",
+                  "nameLocations": [
+                    "1002:18:11"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 2208,
+                  "src": "1002:18:11"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1002:18:11"
+              }
+            ],
+            "name": "create_organizer",
+            "nameLocation": "911:16:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2213,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2210,
+                  "mutability": "mutable",
+                  "name": "_name",
+                  "nameLocation": "942:5:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2236,
+                  "src": "928:19:11",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2209,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "928:6:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2212,
+                  "mutability": "mutable",
+                  "name": "_description",
+                  "nameLocation": "963:12:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2236,
+                  "src": "949:26:11",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2211,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "949:6:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "927:49:11"
+            },
+            "returnParameters": {
+              "id": 2216,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1025:0:11"
+            },
+            "scope": 2250,
+            "src": "902:271:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "baseFunctions": [
+              2172
+            ],
+            "body": {
+              "id": 2248,
+              "nodeType": "Block",
+              "src": "1286:61:11",
+              "statements": [
+                {
+                  "expression": {
+                    "expression": {
+                      "baseExpression": {
+                        "id": 2243,
+                        "name": "organizers",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2182,
+                        "src": "1303:10:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_OrganizerStruct_$2158_storage_$",
+                          "typeString": "mapping(address => struct OrganizerInterface.OrganizerStruct storage ref)"
+                        }
+                      },
+                      "id": 2245,
+                      "indexExpression": {
+                        "id": 2244,
+                        "name": "_organizer_address",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2238,
+                        "src": "1314:18:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "1303:30:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_OrganizerStruct_$2158_storage",
+                        "typeString": "struct OrganizerInterface.OrganizerStruct storage ref"
+                      }
+                    },
+                    "id": 2246,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberLocation": "1334:6:11",
+                    "memberName": "is_set",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 2157,
+                    "src": "1303:37:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 2242,
+                  "id": 2247,
+                  "nodeType": "Return",
+                  "src": "1296:44:11"
+                }
+              ]
+            },
+            "functionSelector": "ee23e2be",
+            "id": 2249,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "is_organizer",
+            "nameLocation": "1188:12:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2239,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2238,
+                  "mutability": "mutable",
+                  "name": "_organizer_address",
+                  "nameLocation": "1209:18:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2249,
+                  "src": "1201:26:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2237,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1201:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1200:28:11"
+            },
+            "returnParameters": {
+              "id": 2242,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2241,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2249,
+                  "src": "1276:4:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 2240,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1276:4:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1275:6:11"
+            },
+            "scope": 2250,
+            "src": "1179:168:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2251,
+        "src": "458:891:11",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:1318:11"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2023-01-21T02:41:40.160Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

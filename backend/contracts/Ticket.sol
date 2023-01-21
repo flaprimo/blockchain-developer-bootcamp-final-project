@@ -2,86 +2,123 @@
 pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
+import "./Event.sol";
 
 interface TicketInterface {
+    struct TicketStruct {
+        string name;
+        uint256 price;
+        bool is_set;
+    }
+
+    function create_ticket(
+        address _event_contract,
+        uint256 _event_id,
+        string memory _name,
+        uint256 _quantity,
+        uint256 _price
+    ) external;
+
     function buy_ticket(
-        address _buyer,
         address _organizer_address,
+        uint256 _event_id,
+        uint256 _ticket_id,
         uint256 _quantity
     ) external payable;
 
-    function delete_ticket() external;
-}
-
-contract Ticket is ERC1155, Ownable {
-    address public event_address;
-    address public organizer_address;
-    string public name;
-    uint256 public quantity;
-    uint256 public price;
-
-    constructor(
-        address _event_address,
-        address _organizer_address,
-        string memory _name,
-        uint256 _initial_supply,
-        uint256 _price
-    ) ERC1155("") {
-        event_address = _event_address;
-        organizer_address = _organizer_address;
-        name = _name;
-        quantity = _initial_supply;
-        price = _price;
-        _mint(address(this), 0, _initial_supply, "");
-    }
-
-    function buy_ticket(address _organizer_address, uint256 _quantity)
+    function available_tickets(uint256 _ticket_id)
         external
-        payable
-    {
-        uint256 total_price = quantity * price;
-        require(
-            balanceOf(address(this), 0) >= _quantity,
-            "Not enough token available to buy"
-        );
-        require(
-            msg.sender.balance >= total_price,
-            "Buyer doesn't have enough Ether"
-        );
-        require(msg.value == total_price, "Buyer isn't paying enough");
-        // payable(account).transfer(total_price);
-        // safeTransferFrom(msg.sender, address(this), AliAPIToken, 100, "");
-        _safeTransferFrom(address(this), msg.sender, 0, _quantity, "");
-        quantity -= _quantity;
-    }
-
-    function delete_ticket() external onlyOwner {
-        selfdestruct(payable(organizer_address));
-    }
+        view
+        returns (uint256);
 }
 
-interface TicketFactoryInterface {
-    function create_ticket() external returns (address);
-}
+contract Ticket is TicketInterface, ERC1155, Ownable {
+    Counters.Counter ticket_id;
+    mapping(address => mapping(uint256 => mapping(uint256 => TicketStruct)))
+        public tickets;
 
-contract TicketFactory is Ownable, TicketFactoryInterface {
-    function create_ticket(
-        address _event_address,
-        address _organizer_address,
-        string memory _name,
-        uint256 _initial_supply,
+    event TicketCreated(
+        address indexed _admin,
+        uint256 _ticket_id,
+        string _name,
+        uint256 _quantity,
         uint256 _price
-    ) external onlyOwner returns (address) {
-        Ticket new_ticket = new Ticket(
-            _event_address,
-            _organizer_address,
+    );
+
+    event TicketBought(
+        address indexed _buyer,
+        uint256 _ticket_id,
+        uint256 _quantity,
+        uint256 _price
+    );
+
+    constructor() ERC1155("") {}
+
+    // Functions
+    function create_ticket(
+        address _event_contract,
+        uint256 _event_id,
+        string memory _name,
+        uint256 _quantity,
+        uint256 _price
+    ) external {
+        require(
+            EventInterface(_event_contract).is_event(msg.sender, _event_id),
+            "Event does not exist"
+        );
+        // require(
+        //     tickets[msg.sender][_event_id].start_datetime < block.timestamp,
+        //     "Event is passed"
+        // );
+        tickets[msg.sender][_event_id][
+            Counters.current(ticket_id)
+        ] = TicketStruct(_name, _price, true);
+        _mint(address(this), Counters.current(ticket_id), _quantity, "");
+        emit TicketCreated(
+            msg.sender,
+            Counters.current(ticket_id),
             _name,
-            _initial_supply,
+            _quantity,
             _price
         );
-        address new_ticket_address = address(new_ticket);
+        Counters.increment(ticket_id);
+    }
 
-        return new_ticket_address;
+    function buy_ticket(
+        address _organizer_address,
+        uint256 _event_id,
+        uint256 _ticket_id,
+        uint256 _quantity
+    ) external payable {
+        require(
+            tickets[_organizer_address][_event_id][_ticket_id].is_set,
+            "Ticket does not exist"
+        );
+        require(
+            balanceOf(address(this), _ticket_id) > 0,
+            "No tickets available"
+        );
+        // require(
+        //     tickets[_organizer_address][_event_id].start_datetime <
+        //         block.timestamp,
+        //     "Event is passed"
+        // );
+        uint256 total_price = _quantity *
+            tickets[_organizer_address][_event_id][_ticket_id].price;
+        require(msg.sender.balance >= total_price, "Buyer balance too low");
+        require(msg.value == total_price, "Wrong payment amount");
+        _safeTransferFrom(address(this), msg.sender, _ticket_id, _quantity, "");
+
+        emit TicketBought(msg.sender, _ticket_id, _quantity, total_price);
+    }
+
+    function available_tickets(uint256 _ticket_id)
+        external
+        view
+        returns (uint256)
+    {
+        return balanceOf(address(this), _ticket_id);
     }
 }
