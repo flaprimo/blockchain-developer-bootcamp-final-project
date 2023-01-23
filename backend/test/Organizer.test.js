@@ -36,8 +36,8 @@ describe("Organizer", function () {
     });
 
     // check that the organizer is added to the organizer_list
-    // const organizer_list = await this.Organizer.organizer_list();
-    // assert.equal(organizer_list[0], organizer_admin);
+    const organizer_list = await this.Organizer.organizer_list(0);
+    assert.equal(organizer_list, organizer_admin);
 
     // check that the organizer is added to the organizers mapping
     const organizerStruct = await this.Organizer.organizers(organizer_admin);

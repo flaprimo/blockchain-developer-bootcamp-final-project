@@ -7,6 +7,8 @@ import "./Organizer.sol";
 
 interface IEvent {
     struct EventStruct {
+        address organizer_address;
+        uint256 event_id;
         string name;
         string description;
         string venue_address;
@@ -22,12 +24,14 @@ interface IEvent {
         string memory _venue_address,
         uint256 _start_datetime,
         uint256 _end_datetime
-    ) external;
+    ) external returns (uint256);
 
     function is_event(address _organizer_address, uint256 _event_id)
         external
         view
         returns (bool);
+
+    function events_length() external view returns (uint256);
 }
 
 contract Event is IEvent, OwnableUpgradeable {
@@ -55,7 +59,7 @@ contract Event is IEvent, OwnableUpgradeable {
         string memory _venue_address,
         uint256 _start_datetime,
         uint256 _end_datetime
-    ) external {
+    ) external returns (uint256) {
         require(
             IOrganizer(_organizer_contract).is_organizer(msg.sender),
             "Organizer does not exist"
@@ -64,7 +68,10 @@ contract Event is IEvent, OwnableUpgradeable {
             _start_datetime < _end_datetime && _end_datetime < block.timestamp,
             "Wrong datetime passed"
         );
-        events[msg.sender][CountersUpgradeable.current(event_id)] = EventStruct(
+        uint256 current_event_id = CountersUpgradeable.current(event_id);
+        events[msg.sender][current_event_id] = EventStruct(
+            msg.sender,
+            current_event_id,
             _name,
             _description,
             _venue_address,
@@ -72,10 +79,10 @@ contract Event is IEvent, OwnableUpgradeable {
             _end_datetime,
             true
         );
-        event_list.push(CountersUpgradeable.current(event_id));
+        event_list.push(current_event_id);
         emit EventCreated(
             msg.sender,
-            CountersUpgradeable.current(event_id),
+            current_event_id,
             _name,
             _description,
             _venue_address,
@@ -83,6 +90,8 @@ contract Event is IEvent, OwnableUpgradeable {
             _end_datetime
         );
         CountersUpgradeable.increment(event_id);
+
+        return current_event_id;
     }
 
     function is_event(address _organizer_address, uint256 _event_id)
@@ -91,5 +100,9 @@ contract Event is IEvent, OwnableUpgradeable {
         returns (bool)
     {
         return events[_organizer_address][_event_id].is_set;
+    }
+
+    function events_length() external view returns (uint256) {
+        return event_list.length;
     }
 }

@@ -17,6 +17,8 @@ interface IOrganizer {
         external
         view
         returns (bool);
+
+    function organizers_length() external view returns (uint256);
 }
 
 contract Organizer is IOrganizer, OwnableUpgradeable {
@@ -55,5 +57,9 @@ contract Organizer is IOrganizer, OwnableUpgradeable {
         returns (bool)
     {
         return organizers[_organizer_address].is_set;
+    }
+
+    function organizers_length() external view returns (uint256) {
+        return organizer_list.length;
     }
 }
