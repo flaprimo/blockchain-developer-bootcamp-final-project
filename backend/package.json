@@ -7,6 +7,7 @@
   },
   "devDependencies": {
     "@openzeppelin/test-environment": "^0.1.9",
+    "@openzeppelin/test-helpers": "^0.5.16",
     "@openzeppelin/truffle-upgrades": "^1.17.0",
     "chai": "^4.3.7",
     "prettier": "^2.8.3",
