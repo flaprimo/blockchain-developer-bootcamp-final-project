@@ -4,6 +4,7 @@ pragma solidity ^0.8.17;
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/CountersUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "./Event.sol";
 
 interface ITicket {
@@ -14,7 +15,6 @@ interface ITicket {
     }
 
     function create_ticket(
-        address _event_contract,
         uint256 _event_id,
         string memory _name,
         uint256 _quantity,
@@ -34,11 +34,17 @@ interface ITicket {
         returns (uint256);
 }
 
-contract Ticket is ITicket, ERC1155Upgradeable, OwnableUpgradeable {
+contract Ticket is
+    Initializable,
+    ERC1155Upgradeable,
+    OwnableUpgradeable,
+    ITicket
+{
     CountersUpgradeable.Counter ticket_id;
     mapping(address => mapping(uint256 => mapping(uint256 => TicketStruct)))
         public tickets;
     uint256[] public ticket_list;
+    IEvent private event_contract;
 
     event TicketCreated(
         address indexed _admin,
@@ -57,20 +63,20 @@ contract Ticket is ITicket, ERC1155Upgradeable, OwnableUpgradeable {
 
     // constructor() ERC1155("") {}
 
-    function initialize() public initializer {
+    function initialize(address _event_contract) public initializer {
+        event_contract = IEvent(_event_contract);
         __ERC1155_init("");
     }
 
     // Functions
     function create_ticket(
-        address _event_contract,
         uint256 _event_id,
         string memory _name,
         uint256 _quantity,
         uint256 _price
     ) external {
         require(
-            IEvent(_event_contract).is_event(msg.sender, _event_id),
+            event_contract.is_event(msg.sender, _event_id),
             "Event does not exist"
         );
         // require(

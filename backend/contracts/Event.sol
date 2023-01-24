@@ -18,7 +18,6 @@ interface IEvent {
     }
 
     function create_event(
-        address _organizer_contract,
         string memory _name,
         string memory _description,
         string memory _venue_address,
@@ -34,10 +33,11 @@ interface IEvent {
     function events_length() external view returns (uint256);
 }
 
-contract Event is IEvent, OwnableUpgradeable {
+contract Event is Initializable, OwnableUpgradeable, IEvent {
     CountersUpgradeable.Counter event_id;
     mapping(address => mapping(uint256 => EventStruct)) public events;
     uint256[] public event_list;
+    IOrganizer private organizer_contract;
 
     event EventCreated(
         address indexed _admin,
@@ -49,11 +49,12 @@ contract Event is IEvent, OwnableUpgradeable {
         uint256 _end_datetime
     );
 
-    // constructor() {}
+    function initialize(address _organizer_contract) public initializer {
+        organizer_contract = IOrganizer(_organizer_contract);
+    }
 
     // Functions
     function create_event(
-        address _organizer_contract,
         string memory _name,
         string memory _description,
         string memory _venue_address,
@@ -61,7 +62,7 @@ contract Event is IEvent, OwnableUpgradeable {
         uint256 _end_datetime
     ) external returns (uint256) {
         require(
-            IOrganizer(_organizer_contract).is_organizer(msg.sender),
+            organizer_contract.is_organizer(msg.sender),
             "Organizer does not exist"
         );
         require(

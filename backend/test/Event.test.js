@@ -1,12 +1,11 @@
 // test/Event.test.js
 
 // Load OpenZeppelin
-// const { accounts, contract } = require("@openzeppelin/test-environment");
-const { expectEvent, expectRevert } = require("@openzeppelin/test-helpers");
-// const [owner] = accounts;
+const { deployProxy } = require("@openzeppelin/truffle-upgrades");
+const { expectEvent } = require("@openzeppelin/test-helpers");
 
 // Load dependencies
-const { expect, AssertionError, assert } = require("chai");
+const { assert } = require("chai");
 
 // Load compiled artifacts
 const Organizer = artifacts.require("Organizer");
@@ -15,10 +14,8 @@ const Event = artifacts.require("Event");
 // Start test block
 describe("Event", function () {
   beforeEach(async function () {
-    // Deploy a new Event contract for each test
-    this.Organizer = await Organizer.new([]);
-    this.organizer_address = this.Organizer.address;
-    this.Event = await Event.new([]);
+    this.Organizer = await deployProxy(Organizer, []);
+    this.Event = await deployProxy(Event, [Organizer.address]);
     this.accounts = await web3.eth.getAccounts();
   });
 
@@ -39,7 +36,6 @@ describe("Event", function () {
     const event_end_datetime = web3.utils.toBN(1672610400); // Sun Jan 01 2023 22:00:00 GMT+0000
 
     let res2 = await this.Event.create_event(
-      this.organizer_address,
       event_name,
       event_description,
       event_venue_address,
