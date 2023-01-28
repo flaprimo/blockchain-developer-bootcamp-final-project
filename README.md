@@ -10,6 +10,11 @@ Technologies involved:
 
 ![Frontend index](docs/assets/frontend-index.png)
 
+## Documentation
+
+- [Avoiding Common Attacks](docs/avoiding_common_attacks.md)
+- [Design Pattern Decisions](docs/design_pattern_decisions.md)
+- [Testnet address and network where the contracts have been deployed](docs/deployed_address.txt)
 ## Backend
 
 ### Tests
