@@ -4,9 +4,9 @@ Allow [Organizers](backend/contracts/Organizer.sol) to set up [Events](backend/c
 
 Technologies involved:
 
-- Backend: Solidity lang, OpenZeppelin, Truffle, Ethersjs
-- Frontend: Reactjs, Nextjs, TailwindCSS, GitHub pages
-- CICD: GitHub Actions
+- **Backend**: Solidity lang, OpenZeppelin, Truffle, Ethersjs
+- **Frontend**: Reactjs, Nextjs, TailwindCSS, GitHub pages
+- **CICD**: GitHub Actions
 
 ![Frontend index](docs/assets/frontend-index.png)
 
@@ -14,7 +14,9 @@ Technologies involved:
 
 - [Avoiding Common Attacks](docs/avoiding_common_attacks.md)
 - [Design Pattern Decisions](docs/design_pattern_decisions.md)
+- [Architecture Diagram](docs/blockchain_ticketing_system.drawio)
 - [Testnet address and network where the contracts have been deployed](docs/deployed_address.txt)
+
 ## Backend
 
 ### Tests
