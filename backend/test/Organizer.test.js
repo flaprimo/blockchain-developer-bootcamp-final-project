@@ -18,6 +18,7 @@ describe("Organizer", function () {
   });
 
   it("Create Organizer", async function () {
+    // Create Organizer
     const organizer_admin = this.accounts[0];
     const organizer_name = "Flavio";
     const organizer_description = "The best event organizer";
@@ -27,6 +28,7 @@ describe("Organizer", function () {
       organizer_description
     );
 
+    // check that the creation event is fired
     await expectEvent(res, "OrganizerCreated", {
       _admin: organizer_admin,
       _name: organizer_name,

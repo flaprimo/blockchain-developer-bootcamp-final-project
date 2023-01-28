@@ -60,6 +60,11 @@
     {
       "inputs": [
         {
+          "internalType": "address",
+          "name": "_organizer_address",
+          "type": "address"
+        },
+        {
           "internalType": "uint256",
           "name": "_ticket_id",
           "type": "uint256"
@@ -75,9 +80,22 @@
       ],
       "stateMutability": "view",
       "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tickets_length",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_ticket_id\",\"type\":\"uint256\"}],\"name\":\"available_tickets\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_organizer_address\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_event_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_ticket_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_quantity\",\"type\":\"uint256\"}],\"name\":\"buy_ticket\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_event_id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_quantity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"}],\"name\":\"create_ticket\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Ticket.sol\":\"ITicket\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol\":{\"keccak256\":\"0x247c62047745915c0af6b955470a72d1696ebad4352d7d3011aef1a2463cd888\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d7fc8396619de513c96b6e00301b88dd790e83542aab918425633a5f7297a15a\",\"dweb:/ipfs/QmXbP4kiZyp7guuS7xe8KaybnwkRPGrBc2Kbi3vhcTfpxb\"]},\"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\":{\"keccak256\":\"0x037c334add4b033ad3493038c25be1682d78c00992e1acb0e2795caff3925271\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8a313cf42389440e2706837c91370323b85971c06afd6d056d21e2bc86459618\",\"dweb:/ipfs/QmT8XUrUvQ9aZaPKrqgRU2JVGWnaxBcUYJA7Q7K5KcLBSZ\"]},\"@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol\":{\"keccak256\":\"0x6de308cde403f95519bf4b25123cbfe9126f2e0212564bb2ad3c23ac99f1a9cb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c72a634af5063075850327e1cea10c540de9e029d9e41e89bb867d790c61a4ff\",\"dweb:/ipfs/QmSVJwqfQD5anH6x2LYmXLBJEFFABnj4sY2TjszsvcdK23\"]},\"@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155ReceiverUpgradeable.sol\":{\"keccak256\":\"0xffcb29612efb57efc8f0d4897deb5abaeac830022c59a3aa17446d698dbc856b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4a4da6e241d1d8c2ef214c311e02c749f45b5e0dd8168c667bc8ee6f67dcf4ce\",\"dweb:/ipfs/QmdsKj5frsNS7ZCfJBm4XNfy6MueV9udBF2FiBxVXwxybG\"]},\"@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155Upgradeable.sol\":{\"keccak256\":\"0x091a49ef99a2be002680781a10cc9dd74c0f348301ede5482c4ea625f79a8ffe\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e037192cadfd20ad0f1b0c54a0c770a1ba551e7d0fcb6d3708e5ba352f88ded2\",\"dweb:/ipfs/QmTXwY6odV1ToDZAYxbbLKThe9M5PUWTmWBjwT776hH4qm\"]},\"@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/IERC1155MetadataURIUpgradeable.sol\":{\"keccak256\":\"0xa350df12a8c10e821af05e0863f44e8317a0efa44df27bfd5dc1d63fdfa3c448\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1870980d15f9003916faf2a9a0eac6dcd4f0e28e2af6f5a3cee0cd685d460ee9\",\"dweb:/ipfs/QmY8K1YZQmuL2WDTPC8QwCm3ztrUD7JKmnvoZkMyGZceiM\"]},\"@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol\":{\"keccak256\":\"0x2edcb41c121abc510932e8d83ff8b82cf9cdde35e7c297622f5c29ef0af25183\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://72460c66cd1c3b1c11b863e0d8df0a1c56f37743019e468dc312c754f43e3b06\",\"dweb:/ipfs/QmPExYKiNb9PUsgktQBupPaM33kzDHxaYoVeJdLhv8s879\"]},\"@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol\":{\"keccak256\":\"0x963ea7f0b48b032eef72fe3a7582edf78408d6f834115b9feadd673a4d5bd149\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d6520943ea55fdf5f0bafb39ed909f64de17051bc954ff3e88c9e5621412c79c\",\"dweb:/ipfs/QmWZ4rAKTQbNG2HxGs46AcTXShsVytKeLs7CUCdCSv5N7a\"]},\"@openzeppelin/contracts-upgradeable/utils/CountersUpgradeable.sol\":{\"keccak256\":\"0x798741e231b22b81e2dd2eddaaf8832dee4baf5cd8e2dbaa5c1dd12a1c053c4d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c41e8a7a906b8f362c8b760a44edadc61782008ea2ecf377ac5b5325bf6c3912\",\"dweb:/ipfs/QmcXr19zuH3YLzD6RZNE6UTzvsKSckdxZQnagPoDGkCHu2\"]},\"@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol\":{\"keccak256\":\"0x9a3b990bd56d139df3e454a9edf1c64668530b5a77fc32eb063bc206f958274a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0895399d170daab2d69b4c43a0202e5a07f2e67a93b26e3354dcbedb062232f7\",\"dweb:/ipfs/QmUM1VH3XDk559Dsgh4QPvupr3YVKjz87HrSyYzzVFZbxw\"]},\"@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable.sol\":{\"keccak256\":\"0xc6cef87559d0aeffdf0a99803de655938a7779ec0a3cd5d4383483ad85565a09\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://92ad7e572cf44e6b4b37631b44b62f9eb9fb1cf14d9ce51c1504d5dc7ccaf758\",\"dweb:/ipfs/QmcnbqX85tsWnUXPmtuPLE4SczME2sJaTfmqEFkuAJvWhy\"]},\"project:/contracts/Event.sol\":{\"keccak256\":\"0xdab379922cee69e707c483ae5b4eef52ff43bdbf2dff4ba6e5c8bab6b3b75013\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://85e78d377d5ff3c23115eef485dc97aba21c8b411328db44a6ac1d0f220b5545\",\"dweb:/ipfs/QmZP4KyMrcbjd5sKB3sYQMuWMsLLNPvCBTKMcf1RzoTWS5\"]},\"project:/contracts/Organizer.sol\":{\"keccak256\":\"0xb26df37aa756173d4bcb0c9076bc9c2db8422415fc5e5776a85a7dd4212bbd87\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://60a1fde854dfb1d24004b0996f3bd521ee588f081773f3899fe73419c45f437c\",\"dweb:/ipfs/QmQkzWSbYgcvC5RVBXBPEqNK4uP7oCndX3q6zjcEZ5hMR6\"]},\"project:/contracts/Ticket.sol\":{\"keccak256\":\"0xa15409e8f8cbbae6ca91ee970bdeee26683469a2f34a9a6a80a3e9899ae329a5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2476a4edcec25b400113f29d3d916788ba5b7405532913c9ad6ad431b705e87a\",\"dweb:/ipfs/QmaoVdc3wzt96Mir6DLoMfPgMxNDowDns2VQz9o28ugxdk\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_organizer_address\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_ticket_id\",\"type\":\"uint256\"}],\"name\":\"available_tickets\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_organizer_address\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_event_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_ticket_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_quantity\",\"type\":\"uint256\"}],\"name\":\"buy_ticket\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_event_id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_quantity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"}],\"name\":\"create_ticket\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"tickets_length\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Ticket.sol\":\"ITicket\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol\":{\"keccak256\":\"0x247c62047745915c0af6b955470a72d1696ebad4352d7d3011aef1a2463cd888\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d7fc8396619de513c96b6e00301b88dd790e83542aab918425633a5f7297a15a\",\"dweb:/ipfs/QmXbP4kiZyp7guuS7xe8KaybnwkRPGrBc2Kbi3vhcTfpxb\"]},\"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\":{\"keccak256\":\"0x037c334add4b033ad3493038c25be1682d78c00992e1acb0e2795caff3925271\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8a313cf42389440e2706837c91370323b85971c06afd6d056d21e2bc86459618\",\"dweb:/ipfs/QmT8XUrUvQ9aZaPKrqgRU2JVGWnaxBcUYJA7Q7K5KcLBSZ\"]},\"@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol\":{\"keccak256\":\"0x6de308cde403f95519bf4b25123cbfe9126f2e0212564bb2ad3c23ac99f1a9cb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c72a634af5063075850327e1cea10c540de9e029d9e41e89bb867d790c61a4ff\",\"dweb:/ipfs/QmSVJwqfQD5anH6x2LYmXLBJEFFABnj4sY2TjszsvcdK23\"]},\"@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155ReceiverUpgradeable.sol\":{\"keccak256\":\"0xffcb29612efb57efc8f0d4897deb5abaeac830022c59a3aa17446d698dbc856b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4a4da6e241d1d8c2ef214c311e02c749f45b5e0dd8168c667bc8ee6f67dcf4ce\",\"dweb:/ipfs/QmdsKj5frsNS7ZCfJBm4XNfy6MueV9udBF2FiBxVXwxybG\"]},\"@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155Upgradeable.sol\":{\"keccak256\":\"0x091a49ef99a2be002680781a10cc9dd74c0f348301ede5482c4ea625f79a8ffe\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e037192cadfd20ad0f1b0c54a0c770a1ba551e7d0fcb6d3708e5ba352f88ded2\",\"dweb:/ipfs/QmTXwY6odV1ToDZAYxbbLKThe9M5PUWTmWBjwT776hH4qm\"]},\"@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/IERC1155MetadataURIUpgradeable.sol\":{\"keccak256\":\"0xa350df12a8c10e821af05e0863f44e8317a0efa44df27bfd5dc1d63fdfa3c448\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1870980d15f9003916faf2a9a0eac6dcd4f0e28e2af6f5a3cee0cd685d460ee9\",\"dweb:/ipfs/QmY8K1YZQmuL2WDTPC8QwCm3ztrUD7JKmnvoZkMyGZceiM\"]},\"@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol\":{\"keccak256\":\"0x2edcb41c121abc510932e8d83ff8b82cf9cdde35e7c297622f5c29ef0af25183\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://72460c66cd1c3b1c11b863e0d8df0a1c56f37743019e468dc312c754f43e3b06\",\"dweb:/ipfs/QmPExYKiNb9PUsgktQBupPaM33kzDHxaYoVeJdLhv8s879\"]},\"@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol\":{\"keccak256\":\"0x963ea7f0b48b032eef72fe3a7582edf78408d6f834115b9feadd673a4d5bd149\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d6520943ea55fdf5f0bafb39ed909f64de17051bc954ff3e88c9e5621412c79c\",\"dweb:/ipfs/QmWZ4rAKTQbNG2HxGs46AcTXShsVytKeLs7CUCdCSv5N7a\"]},\"@openzeppelin/contracts-upgradeable/utils/CountersUpgradeable.sol\":{\"keccak256\":\"0x798741e231b22b81e2dd2eddaaf8832dee4baf5cd8e2dbaa5c1dd12a1c053c4d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c41e8a7a906b8f362c8b760a44edadc61782008ea2ecf377ac5b5325bf6c3912\",\"dweb:/ipfs/QmcXr19zuH3YLzD6RZNE6UTzvsKSckdxZQnagPoDGkCHu2\"]},\"@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol\":{\"keccak256\":\"0x9a3b990bd56d139df3e454a9edf1c64668530b5a77fc32eb063bc206f958274a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0895399d170daab2d69b4c43a0202e5a07f2e67a93b26e3354dcbedb062232f7\",\"dweb:/ipfs/QmUM1VH3XDk559Dsgh4QPvupr3YVKjz87HrSyYzzVFZbxw\"]},\"@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable.sol\":{\"keccak256\":\"0xc6cef87559d0aeffdf0a99803de655938a7779ec0a3cd5d4383483ad85565a09\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://92ad7e572cf44e6b4b37631b44b62f9eb9fb1cf14d9ce51c1504d5dc7ccaf758\",\"dweb:/ipfs/QmcnbqX85tsWnUXPmtuPLE4SczME2sJaTfmqEFkuAJvWhy\"]},\"project:/contracts/Event.sol\":{\"keccak256\":\"0xdab379922cee69e707c483ae5b4eef52ff43bdbf2dff4ba6e5c8bab6b3b75013\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://85e78d377d5ff3c23115eef485dc97aba21c8b411328db44a6ac1d0f220b5545\",\"dweb:/ipfs/QmZP4KyMrcbjd5sKB3sYQMuWMsLLNPvCBTKMcf1RzoTWS5\"]},\"project:/contracts/Organizer.sol\":{\"keccak256\":\"0xb26df37aa756173d4bcb0c9076bc9c2db8422415fc5e5776a85a7dd4212bbd87\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://60a1fde854dfb1d24004b0996f3bd521ee588f081773f3899fe73419c45f437c\",\"dweb:/ipfs/QmQkzWSbYgcvC5RVBXBPEqNK4uP7oCndX3q6zjcEZ5hMR6\"]},\"project:/contracts/Ticket.sol\":{\"keccak256\":\"0x000fe9adc7a06b5e449d444999035b804fa3d038f52d31596f625c096ec5d1f1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://98d04bfdffce32246687ceacdae468977e191124605cf5f376f208a442607afc\",\"dweb:/ipfs/QmULCaWZQvTHaWrNdNJNa198YtL3RPFGHJ82QFrCNxagSM\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -85,7 +103,7 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.17;\n\nimport \"@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol\";\nimport \"@openzeppelin/contracts-upgradeable/utils/CountersUpgradeable.sol\";\nimport \"@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol\";\nimport \"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\";\nimport \"./Event.sol\";\n\ninterface ITicket {\n    struct TicketStruct {\n        string name;\n        uint256 price;\n        bool is_set;\n    }\n\n    function create_ticket(\n        uint256 _event_id,\n        string memory _name,\n        uint256 _quantity,\n        uint256 _price\n    ) external;\n\n    function buy_ticket(\n        address _organizer_address,\n        uint256 _event_id,\n        uint256 _ticket_id,\n        uint256 _quantity\n    ) external payable;\n\n    function available_tickets(uint256 _ticket_id)\n        external\n        view\n        returns (uint256);\n}\n\ncontract Ticket is\n    Initializable,\n    ERC1155Upgradeable,\n    OwnableUpgradeable,\n    ITicket\n{\n    CountersUpgradeable.Counter ticket_id;\n    mapping(address => mapping(uint256 => mapping(uint256 => TicketStruct)))\n        public tickets;\n    uint256[] public ticket_list;\n    IEvent private event_contract;\n\n    event TicketCreated(\n        address indexed _admin,\n        uint256 _ticket_id,\n        string _name,\n        uint256 _quantity,\n        uint256 _price\n    );\n\n    event TicketBought(\n        address indexed _buyer,\n        uint256 _ticket_id,\n        uint256 _quantity,\n        uint256 _price\n    );\n\n    // constructor() ERC1155(\"\") {}\n\n    function initialize(address _event_contract) public initializer {\n        event_contract = IEvent(_event_contract);\n        __ERC1155_init(\"\");\n    }\n\n    // Functions\n    function create_ticket(\n        uint256 _event_id,\n        string memory _name,\n        uint256 _quantity,\n        uint256 _price\n    ) external {\n        require(\n            event_contract.is_event(msg.sender, _event_id),\n            \"Event does not exist\"\n        );\n        // require(\n        //     tickets[msg.sender][_event_id].start_datetime < block.timestamp,\n        //     \"Event is passed\"\n        // );\n        tickets[msg.sender][_event_id][\n            CountersUpgradeable.current(ticket_id)\n        ] = TicketStruct(_name, _price, true);\n        ticket_list.push(CountersUpgradeable.current(ticket_id));\n        _mint(\n            address(this),\n            CountersUpgradeable.current(ticket_id),\n            _quantity,\n            \"\"\n        );\n        emit TicketCreated(\n            msg.sender,\n            CountersUpgradeable.current(ticket_id),\n            _name,\n            _quantity,\n            _price\n        );\n        CountersUpgradeable.increment(ticket_id);\n    }\n\n    function buy_ticket(\n        address _organizer_address,\n        uint256 _event_id,\n        uint256 _ticket_id,\n        uint256 _quantity\n    ) external payable {\n        require(\n            tickets[_organizer_address][_event_id][_ticket_id].is_set,\n            \"Ticket does not exist\"\n        );\n        require(\n            balanceOf(address(this), _ticket_id) > 0,\n            \"No tickets available\"\n        );\n        // require(\n        //     tickets[_organizer_address][_event_id].start_datetime <\n        //         block.timestamp,\n        //     \"Event is passed\"\n        // );\n        uint256 total_price = _quantity *\n            tickets[_organizer_address][_event_id][_ticket_id].price;\n        require(msg.sender.balance >= total_price, \"Buyer balance too low\");\n        require(msg.value == total_price, \"Wrong payment amount\");\n        _safeTransferFrom(address(this), msg.sender, _ticket_id, _quantity, \"\");\n\n        emit TicketBought(msg.sender, _ticket_id, _quantity, total_price);\n    }\n\n    function available_tickets(uint256 _ticket_id)\n        external\n        view\n        returns (uint256)\n    {\n        return balanceOf(address(this), _ticket_id);\n    }\n}\n",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.17;\n\nimport \"@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol\";\nimport \"@openzeppelin/contracts-upgradeable/utils/CountersUpgradeable.sol\";\nimport \"@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol\";\nimport \"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\";\nimport \"./Event.sol\";\n\ninterface ITicket {\n    struct TicketStruct {\n        string name;\n        uint256 price;\n        bool is_set;\n    }\n\n    function create_ticket(\n        uint256 _event_id,\n        string memory _name,\n        uint256 _quantity,\n        uint256 _price\n    ) external;\n\n    function buy_ticket(\n        address _organizer_address,\n        uint256 _event_id,\n        uint256 _ticket_id,\n        uint256 _quantity\n    ) external payable;\n\n    function available_tickets(address _organizer_address, uint256 _ticket_id)\n        external\n        view\n        returns (uint256);\n\n    function tickets_length() external view returns (uint256);\n}\n\ncontract Ticket is\n    Initializable,\n    OwnableUpgradeable,\n    ERC1155Upgradeable,\n    ITicket\n{\n    CountersUpgradeable.Counter ticket_id;\n    mapping(address => mapping(uint256 => mapping(uint256 => TicketStruct)))\n        public tickets;\n    uint256[] public ticket_list;\n    IEvent private event_contract;\n\n    event TicketCreated(\n        address indexed _admin,\n        uint256 _ticket_id,\n        string _name,\n        uint256 _quantity,\n        uint256 _price\n    );\n\n    event TicketBought(\n        address indexed _buyer,\n        uint256 _ticket_id,\n        uint256 _quantity,\n        uint256 _price\n    );\n\n    function initialize(address _event_contract) public initializer {\n        event_contract = IEvent(_event_contract);\n        __ERC1155_init(\"\");\n    }\n\n    // Functions\n    function create_ticket(\n        uint256 _event_id,\n        string memory _name,\n        uint256 _quantity,\n        uint256 _price\n    ) external {\n        require(\n            event_contract.is_event(msg.sender, _event_id),\n            \"Event does not exist\"\n        );\n        // require(\n        //     tickets[msg.sender][_event_id].start_datetime < block.timestamp,\n        //     \"Event is passed\"\n        // );\n        tickets[msg.sender][_event_id][\n            CountersUpgradeable.current(ticket_id)\n        ] = TicketStruct(_name, _price, true);\n        ticket_list.push(CountersUpgradeable.current(ticket_id));\n        _mint(\n            msg.sender,\n            CountersUpgradeable.current(ticket_id),\n            _quantity,\n            \"\"\n        );\n        emit TicketCreated(\n            msg.sender,\n            CountersUpgradeable.current(ticket_id),\n            _name,\n            _quantity,\n            _price\n        );\n        CountersUpgradeable.increment(ticket_id);\n    }\n\n    function buy_ticket(\n        address _organizer_address,\n        uint256 _event_id,\n        uint256 _ticket_id,\n        uint256 _quantity\n    ) external payable {\n        require(\n            tickets[_organizer_address][_event_id][_ticket_id].is_set,\n            \"Ticket does not exist\"\n        );\n        require(\n            balanceOf(_organizer_address, _ticket_id) > 0,\n            \"No tickets available\"\n        );\n        require(\n            msg.sender != _organizer_address,\n            \"Buyer should not be the Organizer\"\n        );\n        // require(\n        //     tickets[_organizer_address][_event_id].start_datetime <\n        //         block.timestamp,\n        //     \"Event is passed\"\n        // );\n        uint256 total_price = _quantity *\n            tickets[_organizer_address][_event_id][_ticket_id].price;\n        require(msg.sender.balance >= total_price, \"Buyer balance too low\");\n        require(msg.value == total_price, \"Wrong payment amount\");\n        _safeTransferFrom(\n            _organizer_address,\n            msg.sender,\n            _ticket_id,\n            _quantity,\n            \"\"\n        );\n\n        emit TicketBought(msg.sender, _ticket_id, _quantity, total_price);\n    }\n\n    function available_tickets(address _organizer_address, uint256 _ticket_id)\n        external\n        view\n        returns (uint256)\n    {\n        return balanceOf(_organizer_address, _ticket_id);\n    }\n\n    function tickets_length() external view returns (uint256) {\n        return ticket_list.length;\n    }\n}\n",
   "sourcePath": "/home/flaprimo/Development/decentralized-ticket-sales/backend/contracts/Ticket.sol",
   "ast": {
     "absolutePath": "project:/contracts/Ticket.sol",
@@ -127,7 +145,7 @@
         2428
       ],
       "ITicket": [
-        2564
+        2571
       ],
       "Initializable": [
         300
@@ -139,10 +157,10 @@
         131
       ],
       "Ticket": [
-        2814
+        2829
       ]
     },
-    "id": 2815,
+    "id": 2830,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
@@ -163,7 +181,7 @@
         "id": 2523,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 2815,
+        "scope": 2830,
         "sourceUnit": 132,
         "src": "58:75:13",
         "symbolAliases": [],
@@ -175,7 +193,7 @@
         "id": 2524,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 2815,
+        "scope": 2830,
         "sourceUnit": 2124,
         "src": "134:75:13",
         "symbolAliases": [],
@@ -187,7 +205,7 @@
         "id": 2525,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 2815,
+        "scope": 2830,
         "sourceUnit": 1546,
         "src": "210:82:13",
         "symbolAliases": [],
@@ -199,7 +217,7 @@
         "id": 2526,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 2815,
+        "scope": 2830,
         "sourceUnit": 301,
         "src": "293:75:13",
         "symbolAliases": [],
@@ -211,7 +229,7 @@
         "id": 2527,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 2815,
+        "scope": 2830,
         "sourceUnit": 2399,
         "src": "369:21:13",
         "symbolAliases": [],
@@ -224,9 +242,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 2564,
+        "id": 2571,
         "linearizedBaseContracts": [
-          2564
+          2571
         ],
         "name": "ITicket",
         "nameLocation": "402:7:13",
@@ -321,7 +339,7 @@
             "name": "TicketStruct",
             "nameLocation": "423:12:13",
             "nodeType": "StructDefinition",
-            "scope": 2564,
+            "scope": 2571,
             "src": "416:92:13",
             "visibility": "public"
           },
@@ -455,7 +473,7 @@
               "parameters": [],
               "src": "658:0:13"
             },
-            "scope": 2564,
+            "scope": 2571,
             "src": "514:145:13",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -592,15 +610,15 @@
               "parameters": [],
               "src": "825:0:13"
             },
-            "scope": 2564,
+            "scope": 2571,
             "src": "665:161:13",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "functionSelector": "f088b381",
-            "id": 2563,
+            "functionSelector": "af6ae12a",
+            "id": 2565,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -608,18 +626,46 @@
             "nameLocation": "841:17:13",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2559,
+              "id": 2561,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
                   "id": 2558,
                   "mutability": "mutable",
-                  "name": "_ticket_id",
-                  "nameLocation": "867:10:13",
+                  "name": "_organizer_address",
+                  "nameLocation": "867:18:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2563,
-                  "src": "859:18:13",
+                  "scope": 2565,
+                  "src": "859:26:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2557,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "859:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2560,
+                  "mutability": "mutable",
+                  "name": "_ticket_id",
+                  "nameLocation": "895:10:13",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2565,
+                  "src": "887:18:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -627,10 +673,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2557,
+                    "id": 2559,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "859:7:13",
+                    "src": "887:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -639,21 +685,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "858:20:13"
+              "src": "858:48:13"
             },
             "returnParameters": {
-              "id": 2562,
+              "id": 2564,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2561,
+                  "id": 2563,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2563,
-                  "src": "926:7:13",
+                  "scope": 2565,
+                  "src": "954:7:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -661,10 +707,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2560,
+                    "id": 2562,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "926:7:13",
+                    "src": "954:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -673,17 +719,72 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "925:9:13"
+              "src": "953:9:13"
             },
-            "scope": 2564,
-            "src": "832:103:13",
+            "scope": 2571,
+            "src": "832:131:13",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "238d17f2",
+            "id": 2570,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tickets_length",
+            "nameLocation": "978:14:13",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2566,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "992:2:13"
+            },
+            "returnParameters": {
+              "id": 2569,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2568,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2570,
+                  "src": "1018:7:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2567,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1018:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1017:9:13"
+            },
+            "scope": 2571,
+            "src": "969:58:13",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 2815,
-        "src": "392:545:13",
+        "scope": 2830,
+        "src": "392:637:13",
         "usedErrors": []
       },
       {
@@ -691,95 +792,95 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 2565,
+              "id": 2572,
               "name": "Initializable",
               "nameLocations": [
-                "962:13:13"
+                "1054:13:13"
               ],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 300,
-              "src": "962:13:13"
+              "src": "1054:13:13"
             },
-            "id": 2566,
+            "id": 2573,
             "nodeType": "InheritanceSpecifier",
-            "src": "962:13:13"
+            "src": "1054:13:13"
           },
           {
             "baseName": {
-              "id": 2567,
-              "name": "ERC1155Upgradeable",
-              "nameLocations": [
-                "981:18:13"
-              ],
-              "nodeType": "IdentifierPath",
-              "referencedDeclaration": 1545,
-              "src": "981:18:13"
-            },
-            "id": 2568,
-            "nodeType": "InheritanceSpecifier",
-            "src": "981:18:13"
-          },
-          {
-            "baseName": {
-              "id": 2569,
+              "id": 2574,
               "name": "OwnableUpgradeable",
               "nameLocations": [
-                "1005:18:13"
+                "1073:18:13"
               ],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 131,
-              "src": "1005:18:13"
+              "src": "1073:18:13"
             },
-            "id": 2570,
+            "id": 2575,
             "nodeType": "InheritanceSpecifier",
-            "src": "1005:18:13"
+            "src": "1073:18:13"
           },
           {
             "baseName": {
-              "id": 2571,
-              "name": "ITicket",
+              "id": 2576,
+              "name": "ERC1155Upgradeable",
               "nameLocations": [
-                "1029:7:13"
+                "1097:18:13"
               ],
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 2564,
-              "src": "1029:7:13"
+              "referencedDeclaration": 1545,
+              "src": "1097:18:13"
             },
-            "id": 2572,
+            "id": 2577,
             "nodeType": "InheritanceSpecifier",
-            "src": "1029:7:13"
+            "src": "1097:18:13"
+          },
+          {
+            "baseName": {
+              "id": 2578,
+              "name": "ITicket",
+              "nameLocations": [
+                "1121:7:13"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 2571,
+              "src": "1121:7:13"
+            },
+            "id": 2579,
+            "nodeType": "InheritanceSpecifier",
+            "src": "1121:7:13"
           }
         ],
         "canonicalName": "Ticket",
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 2814,
+        "id": 2829,
         "linearizedBaseContracts": [
-          2814,
-          2564,
-          131,
+          2829,
+          2571,
           1545,
           1723,
           1708,
           2167,
           2179,
+          131,
           2049,
           300
         ],
         "name": "Ticket",
-        "nameLocation": "948:6:13",
+        "nameLocation": "1040:6:13",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2575,
+            "id": 2582,
             "mutability": "mutable",
             "name": "ticket_id",
-            "nameLocation": "1071:9:13",
+            "nameLocation": "1163:9:13",
             "nodeType": "VariableDeclaration",
-            "scope": 2814,
-            "src": "1043:37:13",
+            "scope": 2829,
+            "src": "1135:37:13",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -787,21 +888,21 @@
               "typeString": "struct CountersUpgradeable.Counter"
             },
             "typeName": {
-              "id": 2574,
+              "id": 2581,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 2573,
+                "id": 2580,
                 "name": "CountersUpgradeable.Counter",
                 "nameLocations": [
-                  "1043:19:13",
-                  "1063:7:13"
+                  "1135:19:13",
+                  "1155:7:13"
                 ],
                 "nodeType": "IdentifierPath",
                 "referencedDeclaration": 2055,
-                "src": "1043:27:13"
+                "src": "1135:27:13"
               },
               "referencedDeclaration": 2055,
-              "src": "1043:27:13",
+              "src": "1135:27:13",
               "typeDescriptions": {
                 "typeIdentifier": "t_struct$_Counter_$2055_storage_ptr",
                 "typeString": "struct CountersUpgradeable.Counter"
@@ -812,13 +913,13 @@
           {
             "constant": false,
             "functionSelector": "2115f4d1",
-            "id": 2584,
+            "id": 2591,
             "mutability": "mutable",
             "name": "tickets",
-            "nameLocation": "1174:7:13",
+            "nameLocation": "1266:7:13",
             "nodeType": "VariableDeclaration",
-            "scope": 2814,
-            "src": "1086:95:13",
+            "scope": 2829,
+            "src": "1178:95:13",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -826,74 +927,74 @@
               "typeString": "mapping(address => mapping(uint256 => mapping(uint256 => struct ITicket.TicketStruct)))"
             },
             "typeName": {
-              "id": 2583,
+              "id": 2590,
               "keyType": {
-                "id": 2576,
+                "id": 2583,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "1094:7:13",
+                "src": "1186:7:13",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
                   "typeString": "address"
                 }
               },
               "nodeType": "Mapping",
-              "src": "1086:72:13",
+              "src": "1178:72:13",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_struct$_TicketStruct_$2534_storage_$_$_$",
                 "typeString": "mapping(address => mapping(uint256 => mapping(uint256 => struct ITicket.TicketStruct)))"
               },
               "valueType": {
-                "id": 2582,
+                "id": 2589,
                 "keyType": {
-                  "id": 2577,
+                  "id": 2584,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1113:7:13",
+                  "src": "1205:7:13",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
                   }
                 },
                 "nodeType": "Mapping",
-                "src": "1105:52:13",
+                "src": "1197:52:13",
                 "typeDescriptions": {
                   "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_struct$_TicketStruct_$2534_storage_$_$",
                   "typeString": "mapping(uint256 => mapping(uint256 => struct ITicket.TicketStruct))"
                 },
                 "valueType": {
-                  "id": 2581,
+                  "id": 2588,
                   "keyType": {
-                    "id": 2578,
+                    "id": 2585,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1132:7:13",
+                    "src": "1224:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "1124:32:13",
+                  "src": "1216:32:13",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_TicketStruct_$2534_storage_$",
                     "typeString": "mapping(uint256 => struct ITicket.TicketStruct)"
                   },
                   "valueType": {
-                    "id": 2580,
+                    "id": 2587,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 2579,
+                      "id": 2586,
                       "name": "TicketStruct",
                       "nameLocations": [
-                        "1143:12:13"
+                        "1235:12:13"
                       ],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 2534,
-                      "src": "1143:12:13"
+                      "src": "1235:12:13"
                     },
                     "referencedDeclaration": 2534,
-                    "src": "1143:12:13",
+                    "src": "1235:12:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_TicketStruct_$2534_storage_ptr",
                       "typeString": "struct ITicket.TicketStruct"
@@ -907,13 +1008,13 @@
           {
             "constant": false,
             "functionSelector": "31f648ad",
-            "id": 2587,
+            "id": 2594,
             "mutability": "mutable",
             "name": "ticket_list",
-            "nameLocation": "1204:11:13",
+            "nameLocation": "1296:11:13",
             "nodeType": "VariableDeclaration",
-            "scope": 2814,
-            "src": "1187:28:13",
+            "scope": 2829,
+            "src": "1279:28:13",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -922,18 +1023,18 @@
             },
             "typeName": {
               "baseType": {
-                "id": 2585,
+                "id": 2592,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "1187:7:13",
+                "src": "1279:7:13",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
-              "id": 2586,
+              "id": 2593,
               "nodeType": "ArrayTypeName",
-              "src": "1187:9:13",
+              "src": "1279:9:13",
               "typeDescriptions": {
                 "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
                 "typeString": "uint256[]"
@@ -943,13 +1044,13 @@
           },
           {
             "constant": false,
-            "id": 2590,
+            "id": 2597,
             "mutability": "mutable",
             "name": "event_contract",
-            "nameLocation": "1236:14:13",
+            "nameLocation": "1328:14:13",
             "nodeType": "VariableDeclaration",
-            "scope": 2814,
-            "src": "1221:29:13",
+            "scope": 2829,
+            "src": "1313:29:13",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -957,20 +1058,20 @@
               "typeString": "contract IEvent"
             },
             "typeName": {
-              "id": 2589,
+              "id": 2596,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 2588,
+                "id": 2595,
                 "name": "IEvent",
                 "nameLocations": [
-                  "1221:6:13"
+                  "1313:6:13"
                 ],
                 "nodeType": "IdentifierPath",
                 "referencedDeclaration": 2231,
-                "src": "1221:6:13"
+                "src": "1313:6:13"
               },
               "referencedDeclaration": 2231,
-              "src": "1221:6:13",
+              "src": "1313:6:13",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_IEvent_$2231",
                 "typeString": "contract IEvent"
@@ -981,24 +1082,24 @@
           {
             "anonymous": false,
             "eventSelector": "ec09b4dfb989318a264039a7d0a2f5a1f63fe13419bcd361f27ff0d6def8a5eb",
-            "id": 2602,
+            "id": 2609,
             "name": "TicketCreated",
-            "nameLocation": "1263:13:13",
+            "nameLocation": "1355:13:13",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2601,
+              "id": 2608,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2592,
+                  "id": 2599,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "_admin",
-                  "nameLocation": "1302:6:13",
+                  "nameLocation": "1394:6:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2602,
-                  "src": "1286:22:13",
+                  "scope": 2609,
+                  "src": "1378:22:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1006,10 +1107,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2591,
+                    "id": 2598,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1286:7:13",
+                    "src": "1378:7:13",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1020,14 +1121,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 2594,
+                  "id": 2601,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_ticket_id",
-                  "nameLocation": "1326:10:13",
+                  "nameLocation": "1418:10:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2602,
-                  "src": "1318:18:13",
+                  "scope": 2609,
+                  "src": "1410:18:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1035,10 +1136,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2593,
+                    "id": 2600,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1318:7:13",
+                    "src": "1410:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1048,14 +1149,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 2596,
+                  "id": 2603,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_name",
-                  "nameLocation": "1353:5:13",
+                  "nameLocation": "1445:5:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2602,
-                  "src": "1346:12:13",
+                  "scope": 2609,
+                  "src": "1438:12:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1063,10 +1164,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2595,
+                    "id": 2602,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1346:6:13",
+                    "src": "1438:6:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1076,14 +1177,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 2598,
+                  "id": 2605,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_quantity",
-                  "nameLocation": "1376:9:13",
+                  "nameLocation": "1468:9:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2602,
-                  "src": "1368:17:13",
+                  "scope": 2609,
+                  "src": "1460:17:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1091,10 +1192,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2597,
+                    "id": 2604,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1368:7:13",
+                    "src": "1460:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1104,14 +1205,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 2600,
+                  "id": 2607,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_price",
-                  "nameLocation": "1403:6:13",
+                  "nameLocation": "1495:6:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2602,
-                  "src": "1395:14:13",
+                  "scope": 2609,
+                  "src": "1487:14:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1119,10 +1220,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2599,
+                    "id": 2606,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1395:7:13",
+                    "src": "1487:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1131,31 +1232,31 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1276:139:13"
+              "src": "1368:139:13"
             },
-            "src": "1257:159:13"
+            "src": "1349:159:13"
           },
           {
             "anonymous": false,
             "eventSelector": "46cdbf90977f71f605a85b7c00f0d4d71f3d811fb25fad2d3ed3d15f0f84a5d7",
-            "id": 2612,
+            "id": 2619,
             "name": "TicketBought",
-            "nameLocation": "1428:12:13",
+            "nameLocation": "1520:12:13",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2611,
+              "id": 2618,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2604,
+                  "id": 2611,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "_buyer",
-                  "nameLocation": "1466:6:13",
+                  "nameLocation": "1558:6:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2612,
-                  "src": "1450:22:13",
+                  "scope": 2619,
+                  "src": "1542:22:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1163,10 +1264,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2603,
+                    "id": 2610,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1450:7:13",
+                    "src": "1542:7:13",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1177,14 +1278,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 2606,
+                  "id": 2613,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_ticket_id",
-                  "nameLocation": "1490:10:13",
+                  "nameLocation": "1582:10:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2612,
-                  "src": "1482:18:13",
+                  "scope": 2619,
+                  "src": "1574:18:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1192,10 +1293,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2605,
+                    "id": 2612,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1482:7:13",
+                    "src": "1574:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1205,14 +1306,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 2608,
+                  "id": 2615,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_quantity",
-                  "nameLocation": "1518:9:13",
+                  "nameLocation": "1610:9:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2612,
-                  "src": "1510:17:13",
+                  "scope": 2619,
+                  "src": "1602:17:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1220,10 +1321,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2607,
+                    "id": 2614,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1510:7:13",
+                    "src": "1602:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1233,14 +1334,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 2610,
+                  "id": 2617,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_price",
-                  "nameLocation": "1545:6:13",
+                  "nameLocation": "1637:6:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2612,
-                  "src": "1537:14:13",
+                  "scope": 2619,
+                  "src": "1629:14:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1248,10 +1349,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2609,
+                    "id": 2616,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1537:7:13",
+                    "src": "1629:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1260,30 +1361,30 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1440:117:13"
+              "src": "1532:117:13"
             },
-            "src": "1422:136:13"
+            "src": "1514:136:13"
           },
           {
             "body": {
-              "id": 2629,
+              "id": 2636,
               "nodeType": "Block",
-              "src": "1665:85:13",
+              "src": "1720:85:13",
               "statements": [
                 {
                   "expression": {
-                    "id": 2623,
+                    "id": 2630,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 2619,
+                      "id": 2626,
                       "name": "event_contract",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2590,
-                      "src": "1675:14:13",
+                      "referencedDeclaration": 2597,
+                      "src": "1730:14:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_contract$_IEvent_$2231",
                         "typeString": "contract IEvent"
@@ -1294,12 +1395,12 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 2621,
+                          "id": 2628,
                           "name": "_event_contract",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2614,
-                          "src": "1699:15:13",
+                          "referencedDeclaration": 2621,
+                          "src": "1754:15:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -1313,18 +1414,18 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 2620,
+                        "id": 2627,
                         "name": "IEvent",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 2231,
-                        "src": "1692:6:13",
+                        "src": "1747:6:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_type$_t_contract$_IEvent_$2231_$",
                           "typeString": "type(contract IEvent)"
                         }
                       },
-                      "id": 2622,
+                      "id": 2629,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1333,36 +1434,36 @@
                       "nameLocations": [],
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "1692:23:13",
+                      "src": "1747:23:13",
                       "tryCall": false,
                       "typeDescriptions": {
                         "typeIdentifier": "t_contract$_IEvent_$2231",
                         "typeString": "contract IEvent"
                       }
                     },
-                    "src": "1675:40:13",
+                    "src": "1730:40:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_IEvent_$2231",
                       "typeString": "contract IEvent"
                     }
                   },
-                  "id": 2624,
+                  "id": 2631,
                   "nodeType": "ExpressionStatement",
-                  "src": "1675:40:13"
+                  "src": "1730:40:13"
                 },
                 {
                   "expression": {
                     "arguments": [
                       {
                         "hexValue": "",
-                        "id": 2626,
+                        "id": 2633,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1740:2:13",
+                        "src": "1795:2:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
                           "typeString": "literal_string \"\""
@@ -1377,18 +1478,18 @@
                           "typeString": "literal_string \"\""
                         }
                       ],
-                      "id": 2625,
+                      "id": 2632,
                       "name": "__ERC1155_init",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 350,
-                      "src": "1725:14:13",
+                      "src": "1780:14:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (string memory)"
                       }
                     },
-                    "id": 2627,
+                    "id": 2634,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1397,57 +1498,57 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1725:18:13",
+                    "src": "1780:18:13",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2628,
+                  "id": 2635,
                   "nodeType": "ExpressionStatement",
-                  "src": "1725:18:13"
+                  "src": "1780:18:13"
                 }
               ]
             },
             "functionSelector": "c4d66de8",
-            "id": 2630,
+            "id": 2637,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
-                "id": 2617,
+                "id": 2624,
                 "kind": "modifierInvocation",
                 "modifierName": {
-                  "id": 2616,
+                  "id": 2623,
                   "name": "initializer",
                   "nameLocations": [
-                    "1653:11:13"
+                    "1708:11:13"
                   ],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 202,
-                  "src": "1653:11:13"
+                  "src": "1708:11:13"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "1653:11:13"
+                "src": "1708:11:13"
               }
             ],
             "name": "initialize",
-            "nameLocation": "1610:10:13",
+            "nameLocation": "1665:10:13",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2615,
+              "id": 2622,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2614,
+                  "id": 2621,
                   "mutability": "mutable",
                   "name": "_event_contract",
-                  "nameLocation": "1629:15:13",
+                  "nameLocation": "1684:15:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2630,
-                  "src": "1621:23:13",
+                  "scope": 2637,
+                  "src": "1676:23:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1455,10 +1556,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2613,
+                    "id": 2620,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1621:7:13",
+                    "src": "1676:7:13",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1468,16 +1569,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1620:25:13"
+              "src": "1675:25:13"
             },
             "returnParameters": {
-              "id": 2618,
+              "id": 2625,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1665:0:13"
+              "src": "1720:0:13"
             },
-            "scope": 2814,
-            "src": "1601:149:13",
+            "scope": 2829,
+            "src": "1656:149:13",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
@@ -1487,9 +1588,9 @@
               2545
             ],
             "body": {
-              "id": 2709,
+              "id": 2714,
               "nodeType": "Block",
-              "src": "1918:850:13",
+              "src": "1973:847:13",
               "statements": [
                 {
                   "expression": {
@@ -1498,38 +1599,38 @@
                         "arguments": [
                           {
                             "expression": {
-                              "id": 2644,
+                              "id": 2651,
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 4294967281,
-                              "src": "1973:3:13",
+                              "src": "2028:3:13",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
                                 "typeString": "msg"
                               }
                             },
-                            "id": 2645,
+                            "id": 2652,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
-                            "memberLocation": "1977:6:13",
+                            "memberLocation": "2032:6:13",
                             "memberName": "sender",
                             "nodeType": "MemberAccess",
-                            "src": "1973:10:13",
+                            "src": "2028:10:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
                             }
                           },
                           {
-                            "id": 2646,
+                            "id": 2653,
                             "name": "_event_id",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2632,
-                            "src": "1985:9:13",
+                            "referencedDeclaration": 2639,
+                            "src": "2040:9:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -1548,33 +1649,33 @@
                             }
                           ],
                           "expression": {
-                            "id": 2642,
+                            "id": 2649,
                             "name": "event_contract",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2590,
-                            "src": "1949:14:13",
+                            "referencedDeclaration": 2597,
+                            "src": "2004:14:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_IEvent_$2231",
                               "typeString": "contract IEvent"
                             }
                           },
-                          "id": 2643,
+                          "id": 2650,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
-                          "memberLocation": "1964:8:13",
+                          "memberLocation": "2019:8:13",
                           "memberName": "is_event",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": 2225,
-                          "src": "1949:23:13",
+                          "src": "2004:23:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_view$_t_address_$_t_uint256_$returns$_t_bool_$",
                             "typeString": "function (address,uint256) view external returns (bool)"
                           }
                         },
-                        "id": 2647,
+                        "id": 2654,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1583,7 +1684,7 @@
                         "nameLocations": [],
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "1949:46:13",
+                        "src": "2004:46:13",
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
@@ -1592,14 +1693,14 @@
                       },
                       {
                         "hexValue": "4576656e7420646f6573206e6f74206578697374",
-                        "id": 2648,
+                        "id": 2655,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "2009:22:13",
+                        "src": "2064:22:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_d6a0a1b0de2660245b1b2118b6d2e9d5a4b7d37cb6ad58f2fde377db8093825b",
                           "typeString": "literal_string \"Event does not exist\""
@@ -1618,7 +1719,7 @@
                           "typeString": "literal_string \"Event does not exist\""
                         }
                       ],
-                      "id": 2641,
+                      "id": 2648,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -1626,13 +1727,13 @@
                         4294967278
                       ],
                       "referencedDeclaration": 4294967278,
-                      "src": "1928:7:13",
+                      "src": "1983:7:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 2649,
+                    "id": 2656,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1641,20 +1742,20 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1928:113:13",
+                    "src": "1983:113:13",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2650,
+                  "id": 2657,
                   "nodeType": "ExpressionStatement",
-                  "src": "1928:113:13"
+                  "src": "1983:113:13"
                 },
                 {
                   "expression": {
-                    "id": 2667,
+                    "id": 2674,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1663,40 +1764,40 @@
                       "baseExpression": {
                         "baseExpression": {
                           "baseExpression": {
-                            "id": 2651,
+                            "id": 2658,
                             "name": "tickets",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2584,
-                            "src": "2198:7:13",
+                            "referencedDeclaration": 2591,
+                            "src": "2253:7:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_struct$_TicketStruct_$2534_storage_$_$_$",
                               "typeString": "mapping(address => mapping(uint256 => mapping(uint256 => struct ITicket.TicketStruct storage ref)))"
                             }
                           },
-                          "id": 2659,
+                          "id": 2666,
                           "indexExpression": {
                             "expression": {
-                              "id": 2652,
+                              "id": 2659,
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 4294967281,
-                              "src": "2206:3:13",
+                              "src": "2261:3:13",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
                                 "typeString": "msg"
                               }
                             },
-                            "id": 2653,
+                            "id": 2660,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
-                            "memberLocation": "2210:6:13",
+                            "memberLocation": "2265:6:13",
                             "memberName": "sender",
                             "nodeType": "MemberAccess",
-                            "src": "2206:10:13",
+                            "src": "2261:10:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
@@ -1707,20 +1808,20 @@
                           "isPure": false,
                           "lValueRequested": false,
                           "nodeType": "IndexAccess",
-                          "src": "2198:19:13",
+                          "src": "2253:19:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_struct$_TicketStruct_$2534_storage_$_$",
                             "typeString": "mapping(uint256 => mapping(uint256 => struct ITicket.TicketStruct storage ref))"
                           }
                         },
-                        "id": 2660,
+                        "id": 2667,
                         "indexExpression": {
-                          "id": 2654,
+                          "id": 2661,
                           "name": "_event_id",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2632,
-                          "src": "2218:9:13",
+                          "referencedDeclaration": 2639,
+                          "src": "2273:9:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -1731,22 +1832,22 @@
                         "isPure": false,
                         "lValueRequested": false,
                         "nodeType": "IndexAccess",
-                        "src": "2198:30:13",
+                        "src": "2253:30:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_TicketStruct_$2534_storage_$",
                           "typeString": "mapping(uint256 => struct ITicket.TicketStruct storage ref)"
                         }
                       },
-                      "id": 2661,
+                      "id": 2668,
                       "indexExpression": {
                         "arguments": [
                           {
-                            "id": 2657,
+                            "id": 2664,
                             "name": "ticket_id",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2575,
-                            "src": "2270:9:13",
+                            "referencedDeclaration": 2582,
+                            "src": "2325:9:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_struct$_Counter_$2055_storage",
                               "typeString": "struct CountersUpgradeable.Counter storage ref"
@@ -1761,33 +1862,33 @@
                             }
                           ],
                           "expression": {
-                            "id": 2655,
+                            "id": 2662,
                             "name": "CountersUpgradeable",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 2123,
-                            "src": "2242:19:13",
+                            "src": "2297:19:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_type$_t_contract$_CountersUpgradeable_$2123_$",
                               "typeString": "type(library CountersUpgradeable)"
                             }
                           },
-                          "id": 2656,
+                          "id": 2663,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
-                          "memberLocation": "2262:7:13",
+                          "memberLocation": "2317:7:13",
                           "memberName": "current",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": 2067,
-                          "src": "2242:27:13",
+                          "src": "2297:27:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_struct$_Counter_$2055_storage_ptr_$returns$_t_uint256_$",
                             "typeString": "function (struct CountersUpgradeable.Counter storage pointer) view returns (uint256)"
                           }
                         },
-                        "id": 2658,
+                        "id": 2665,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1796,7 +1897,7 @@
                         "nameLocations": [],
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "2242:38:13",
+                        "src": "2297:38:13",
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1808,7 +1909,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "2198:92:13",
+                      "src": "2253:92:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_TicketStruct_$2534_storage",
                         "typeString": "struct ITicket.TicketStruct storage ref"
@@ -1819,24 +1920,24 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 2663,
+                          "id": 2670,
                           "name": "_name",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2634,
-                          "src": "2306:5:13",
+                          "referencedDeclaration": 2641,
+                          "src": "2361:5:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_string_memory_ptr",
                             "typeString": "string memory"
                           }
                         },
                         {
-                          "id": 2664,
+                          "id": 2671,
                           "name": "_price",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2638,
-                          "src": "2313:6:13",
+                          "referencedDeclaration": 2645,
+                          "src": "2368:6:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -1844,14 +1945,14 @@
                         },
                         {
                           "hexValue": "74727565",
-                          "id": 2665,
+                          "id": 2672,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
                           "kind": "bool",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "2321:4:13",
+                          "src": "2376:4:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
@@ -1874,18 +1975,18 @@
                             "typeString": "bool"
                           }
                         ],
-                        "id": 2662,
+                        "id": 2669,
                         "name": "TicketStruct",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 2534,
-                        "src": "2293:12:13",
+                        "src": "2348:12:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_type$_t_struct$_TicketStruct_$2534_storage_ptr_$",
                           "typeString": "type(struct ITicket.TicketStruct storage pointer)"
                         }
                       },
-                      "id": 2666,
+                      "id": 2673,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1894,22 +1995,22 @@
                       "nameLocations": [],
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "2293:33:13",
+                      "src": "2348:33:13",
                       "tryCall": false,
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_TicketStruct_$2534_memory_ptr",
                         "typeString": "struct ITicket.TicketStruct memory"
                       }
                     },
-                    "src": "2198:128:13",
+                    "src": "2253:128:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_TicketStruct_$2534_storage",
                       "typeString": "struct ITicket.TicketStruct storage ref"
                     }
                   },
-                  "id": 2668,
+                  "id": 2675,
                   "nodeType": "ExpressionStatement",
-                  "src": "2198:128:13"
+                  "src": "2253:128:13"
                 },
                 {
                   "expression": {
@@ -1917,12 +2018,12 @@
                       {
                         "arguments": [
                           {
-                            "id": 2674,
+                            "id": 2681,
                             "name": "ticket_id",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2575,
-                            "src": "2381:9:13",
+                            "referencedDeclaration": 2582,
+                            "src": "2436:9:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_struct$_Counter_$2055_storage",
                               "typeString": "struct CountersUpgradeable.Counter storage ref"
@@ -1937,33 +2038,33 @@
                             }
                           ],
                           "expression": {
-                            "id": 2672,
+                            "id": 2679,
                             "name": "CountersUpgradeable",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 2123,
-                            "src": "2353:19:13",
+                            "src": "2408:19:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_type$_t_contract$_CountersUpgradeable_$2123_$",
                               "typeString": "type(library CountersUpgradeable)"
                             }
                           },
-                          "id": 2673,
+                          "id": 2680,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
-                          "memberLocation": "2373:7:13",
+                          "memberLocation": "2428:7:13",
                           "memberName": "current",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": 2067,
-                          "src": "2353:27:13",
+                          "src": "2408:27:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_struct$_Counter_$2055_storage_ptr_$returns$_t_uint256_$",
                             "typeString": "function (struct CountersUpgradeable.Counter storage pointer) view returns (uint256)"
                           }
                         },
-                        "id": 2675,
+                        "id": 2682,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1972,7 +2073,7 @@
                         "nameLocations": [],
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "2353:38:13",
+                        "src": "2408:38:13",
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1988,32 +2089,32 @@
                         }
                       ],
                       "expression": {
-                        "id": 2669,
+                        "id": 2676,
                         "name": "ticket_list",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2587,
-                        "src": "2336:11:13",
+                        "referencedDeclaration": 2594,
+                        "src": "2391:11:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
                           "typeString": "uint256[] storage ref"
                         }
                       },
-                      "id": 2671,
+                      "id": 2678,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
-                      "memberLocation": "2348:4:13",
+                      "memberLocation": "2403:4:13",
                       "memberName": "push",
                       "nodeType": "MemberAccess",
-                      "src": "2336:16:13",
+                      "src": "2391:16:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_uint256_$dyn_storage_ptr_$_t_uint256_$returns$__$bound_to$_t_array$_t_uint256_$dyn_storage_ptr_$",
                         "typeString": "function (uint256[] storage pointer,uint256)"
                       }
                     },
-                    "id": 2676,
+                    "id": 2683,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2022,72 +2123,42 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2336:56:13",
+                    "src": "2391:56:13",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2677,
+                  "id": 2684,
                   "nodeType": "ExpressionStatement",
-                  "src": "2336:56:13"
+                  "src": "2391:56:13"
                 },
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "arguments": [
-                          {
-                            "id": 2681,
-                            "name": "this",
-                            "nodeType": "Identifier",
-                            "overloadedDeclarations": [],
-                            "referencedDeclaration": 4294967268,
-                            "src": "2429:4:13",
-                            "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_Ticket_$2814",
-                              "typeString": "contract Ticket"
-                            }
-                          }
-                        ],
                         "expression": {
-                          "argumentTypes": [
-                            {
-                              "typeIdentifier": "t_contract$_Ticket_$2814",
-                              "typeString": "contract Ticket"
-                            }
-                          ],
-                          "id": 2680,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": true,
-                          "lValueRequested": false,
-                          "nodeType": "ElementaryTypeNameExpression",
-                          "src": "2421:7:13",
+                          "id": 2686,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967281,
+                          "src": "2476:3:13",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_address_$",
-                            "typeString": "type(address)"
-                          },
-                          "typeName": {
-                            "id": 2679,
-                            "name": "address",
-                            "nodeType": "ElementaryTypeName",
-                            "src": "2421:7:13",
-                            "typeDescriptions": {}
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
                           }
                         },
-                        "id": 2682,
+                        "id": 2687,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
-                        "kind": "typeConversion",
                         "lValueRequested": false,
-                        "nameLocations": [],
-                        "names": [],
-                        "nodeType": "FunctionCall",
-                        "src": "2421:13:13",
-                        "tryCall": false,
+                        "memberLocation": "2480:6:13",
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "src": "2476:10:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -2096,12 +2167,12 @@
                       {
                         "arguments": [
                           {
-                            "id": 2685,
+                            "id": 2690,
                             "name": "ticket_id",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2575,
-                            "src": "2476:9:13",
+                            "referencedDeclaration": 2582,
+                            "src": "2528:9:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_struct$_Counter_$2055_storage",
                               "typeString": "struct CountersUpgradeable.Counter storage ref"
@@ -2116,33 +2187,33 @@
                             }
                           ],
                           "expression": {
-                            "id": 2683,
+                            "id": 2688,
                             "name": "CountersUpgradeable",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 2123,
-                            "src": "2448:19:13",
+                            "src": "2500:19:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_type$_t_contract$_CountersUpgradeable_$2123_$",
                               "typeString": "type(library CountersUpgradeable)"
                             }
                           },
-                          "id": 2684,
+                          "id": 2689,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
-                          "memberLocation": "2468:7:13",
+                          "memberLocation": "2520:7:13",
                           "memberName": "current",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": 2067,
-                          "src": "2448:27:13",
+                          "src": "2500:27:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_struct$_Counter_$2055_storage_ptr_$returns$_t_uint256_$",
                             "typeString": "function (struct CountersUpgradeable.Counter storage pointer) view returns (uint256)"
                           }
                         },
-                        "id": 2686,
+                        "id": 2691,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -2151,7 +2222,7 @@
                         "nameLocations": [],
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "2448:38:13",
+                        "src": "2500:38:13",
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -2159,12 +2230,12 @@
                         }
                       },
                       {
-                        "id": 2687,
+                        "id": 2692,
                         "name": "_quantity",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2636,
-                        "src": "2500:9:13",
+                        "referencedDeclaration": 2643,
+                        "src": "2552:9:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2172,14 +2243,14 @@
                       },
                       {
                         "hexValue": "",
-                        "id": 2688,
+                        "id": 2693,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "2523:2:13",
+                        "src": "2575:2:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
                           "typeString": "literal_string \"\""
@@ -2206,18 +2277,18 @@
                           "typeString": "literal_string \"\""
                         }
                       ],
-                      "id": 2678,
+                      "id": 2685,
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 974,
-                      "src": "2402:5:13",
+                      "src": "2457:5:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$_t_uint256_$_t_bytes_memory_ptr_$returns$__$",
                         "typeString": "function (address,uint256,uint256,bytes memory)"
                       }
                     },
-                    "id": 2689,
+                    "id": 2694,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2226,42 +2297,42 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2402:133:13",
+                    "src": "2457:130:13",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2690,
+                  "id": 2695,
                   "nodeType": "ExpressionStatement",
-                  "src": "2402:133:13"
+                  "src": "2457:130:13"
                 },
                 {
                   "eventCall": {
                     "arguments": [
                       {
                         "expression": {
-                          "id": 2692,
+                          "id": 2697,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 4294967281,
-                          "src": "2577:3:13",
+                          "src": "2629:3:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2693,
+                        "id": 2698,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
-                        "memberLocation": "2581:6:13",
+                        "memberLocation": "2633:6:13",
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
-                        "src": "2577:10:13",
+                        "src": "2629:10:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -2270,12 +2341,12 @@
                       {
                         "arguments": [
                           {
-                            "id": 2696,
+                            "id": 2701,
                             "name": "ticket_id",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2575,
-                            "src": "2629:9:13",
+                            "referencedDeclaration": 2582,
+                            "src": "2681:9:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_struct$_Counter_$2055_storage",
                               "typeString": "struct CountersUpgradeable.Counter storage ref"
@@ -2290,33 +2361,33 @@
                             }
                           ],
                           "expression": {
-                            "id": 2694,
+                            "id": 2699,
                             "name": "CountersUpgradeable",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 2123,
-                            "src": "2601:19:13",
+                            "src": "2653:19:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_type$_t_contract$_CountersUpgradeable_$2123_$",
                               "typeString": "type(library CountersUpgradeable)"
                             }
                           },
-                          "id": 2695,
+                          "id": 2700,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
-                          "memberLocation": "2621:7:13",
+                          "memberLocation": "2673:7:13",
                           "memberName": "current",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": 2067,
-                          "src": "2601:27:13",
+                          "src": "2653:27:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_struct$_Counter_$2055_storage_ptr_$returns$_t_uint256_$",
                             "typeString": "function (struct CountersUpgradeable.Counter storage pointer) view returns (uint256)"
                           }
                         },
-                        "id": 2697,
+                        "id": 2702,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -2325,7 +2396,7 @@
                         "nameLocations": [],
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "2601:38:13",
+                        "src": "2653:38:13",
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -2333,36 +2404,36 @@
                         }
                       },
                       {
-                        "id": 2698,
+                        "id": 2703,
                         "name": "_name",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2634,
-                        "src": "2653:5:13",
+                        "referencedDeclaration": 2641,
+                        "src": "2705:5:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
                           "typeString": "string memory"
                         }
                       },
                       {
-                        "id": 2699,
+                        "id": 2704,
                         "name": "_quantity",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2636,
-                        "src": "2672:9:13",
+                        "referencedDeclaration": 2643,
+                        "src": "2724:9:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         }
                       },
                       {
-                        "id": 2700,
+                        "id": 2705,
                         "name": "_price",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2638,
-                        "src": "2695:6:13",
+                        "referencedDeclaration": 2645,
+                        "src": "2747:6:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2392,18 +2463,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 2691,
+                      "id": 2696,
                       "name": "TicketCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2602,
-                      "src": "2550:13:13",
+                      "referencedDeclaration": 2609,
+                      "src": "2602:13:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_uint256_$_t_string_memory_ptr_$_t_uint256_$_t_uint256_$returns$__$",
                         "typeString": "function (address,uint256,string memory,uint256,uint256)"
                       }
                     },
-                    "id": 2701,
+                    "id": 2706,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2412,27 +2483,27 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2550:161:13",
+                    "src": "2602:161:13",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2702,
+                  "id": 2707,
                   "nodeType": "EmitStatement",
-                  "src": "2545:166:13"
+                  "src": "2597:166:13"
                 },
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 2706,
+                        "id": 2711,
                         "name": "ticket_id",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2575,
-                        "src": "2751:9:13",
+                        "referencedDeclaration": 2582,
+                        "src": "2803:9:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Counter_$2055_storage",
                           "typeString": "struct CountersUpgradeable.Counter storage ref"
@@ -2447,33 +2518,33 @@
                         }
                       ],
                       "expression": {
-                        "id": 2703,
+                        "id": 2708,
                         "name": "CountersUpgradeable",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 2123,
-                        "src": "2721:19:13",
+                        "src": "2773:19:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_type$_t_contract$_CountersUpgradeable_$2123_$",
                           "typeString": "type(library CountersUpgradeable)"
                         }
                       },
-                      "id": 2705,
+                      "id": 2710,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
-                      "memberLocation": "2741:9:13",
+                      "memberLocation": "2793:9:13",
                       "memberName": "increment",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2081,
-                      "src": "2721:29:13",
+                      "src": "2773:29:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Counter_$2055_storage_ptr_$returns$__$",
                         "typeString": "function (struct CountersUpgradeable.Counter storage pointer)"
                       }
                     },
-                    "id": 2707,
+                    "id": 2712,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2482,40 +2553,40 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2721:40:13",
+                    "src": "2773:40:13",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2708,
+                  "id": 2713,
                   "nodeType": "ExpressionStatement",
-                  "src": "2721:40:13"
+                  "src": "2773:40:13"
                 }
               ]
             },
             "functionSelector": "84843955",
-            "id": 2710,
+            "id": 2715,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "create_ticket",
-            "nameLocation": "1782:13:13",
+            "nameLocation": "1837:13:13",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2639,
+              "id": 2646,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2632,
+                  "id": 2639,
                   "mutability": "mutable",
                   "name": "_event_id",
-                  "nameLocation": "1813:9:13",
+                  "nameLocation": "1868:9:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2710,
-                  "src": "1805:17:13",
+                  "scope": 2715,
+                  "src": "1860:17:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2523,10 +2594,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2631,
+                    "id": 2638,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1805:7:13",
+                    "src": "1860:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2536,13 +2607,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2634,
+                  "id": 2641,
                   "mutability": "mutable",
                   "name": "_name",
-                  "nameLocation": "1846:5:13",
+                  "nameLocation": "1901:5:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2710,
-                  "src": "1832:19:13",
+                  "scope": 2715,
+                  "src": "1887:19:13",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2550,10 +2621,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2633,
+                    "id": 2640,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1832:6:13",
+                    "src": "1887:6:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2563,13 +2634,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2636,
+                  "id": 2643,
                   "mutability": "mutable",
                   "name": "_quantity",
-                  "nameLocation": "1869:9:13",
+                  "nameLocation": "1924:9:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2710,
-                  "src": "1861:17:13",
+                  "scope": 2715,
+                  "src": "1916:17:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2577,10 +2648,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2635,
+                    "id": 2642,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1861:7:13",
+                    "src": "1916:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2590,13 +2661,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2638,
+                  "id": 2645,
                   "mutability": "mutable",
                   "name": "_price",
-                  "nameLocation": "1896:6:13",
+                  "nameLocation": "1951:6:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2710,
-                  "src": "1888:14:13",
+                  "scope": 2715,
+                  "src": "1943:14:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2604,10 +2675,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2637,
+                    "id": 2644,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1888:7:13",
+                    "src": "1943:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2616,16 +2687,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1795:113:13"
+              "src": "1850:113:13"
             },
             "returnParameters": {
-              "id": 2640,
+              "id": 2647,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1918:0:13"
+              "src": "1973:0:13"
             },
-            "scope": 2814,
-            "src": "1773:995:13",
+            "scope": 2829,
+            "src": "1828:992:13",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -2635,9 +2706,9 @@
               2556
             ],
             "body": {
-              "id": 2796,
+              "id": 2803,
               "nodeType": "Block",
-              "src": "2935:846:13",
+              "src": "2987:1048:13",
               "statements": [
                 {
                   "expression": {
@@ -2647,25 +2718,25 @@
                           "baseExpression": {
                             "baseExpression": {
                               "baseExpression": {
-                                "id": 2722,
+                                "id": 2727,
                                 "name": "tickets",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 2584,
-                                "src": "2966:7:13",
+                                "referencedDeclaration": 2591,
+                                "src": "3018:7:13",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_struct$_TicketStruct_$2534_storage_$_$_$",
                                   "typeString": "mapping(address => mapping(uint256 => mapping(uint256 => struct ITicket.TicketStruct storage ref)))"
                                 }
                               },
-                              "id": 2724,
+                              "id": 2729,
                               "indexExpression": {
-                                "id": 2723,
+                                "id": 2728,
                                 "name": "_organizer_address",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 2712,
-                                "src": "2974:18:13",
+                                "referencedDeclaration": 2717,
+                                "src": "3026:18:13",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_address",
                                   "typeString": "address"
@@ -2676,20 +2747,20 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "nodeType": "IndexAccess",
-                              "src": "2966:27:13",
+                              "src": "3018:27:13",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_struct$_TicketStruct_$2534_storage_$_$",
                                 "typeString": "mapping(uint256 => mapping(uint256 => struct ITicket.TicketStruct storage ref))"
                               }
                             },
-                            "id": 2726,
+                            "id": 2731,
                             "indexExpression": {
-                              "id": 2725,
+                              "id": 2730,
                               "name": "_event_id",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 2714,
-                              "src": "2994:9:13",
+                              "referencedDeclaration": 2719,
+                              "src": "3046:9:13",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -2700,20 +2771,20 @@
                             "isPure": false,
                             "lValueRequested": false,
                             "nodeType": "IndexAccess",
-                            "src": "2966:38:13",
+                            "src": "3018:38:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_TicketStruct_$2534_storage_$",
                               "typeString": "mapping(uint256 => struct ITicket.TicketStruct storage ref)"
                             }
                           },
-                          "id": 2728,
+                          "id": 2733,
                           "indexExpression": {
-                            "id": 2727,
+                            "id": 2732,
                             "name": "_ticket_id",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2716,
-                            "src": "3005:10:13",
+                            "referencedDeclaration": 2721,
+                            "src": "3057:10:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -2724,22 +2795,22 @@
                           "isPure": false,
                           "lValueRequested": false,
                           "nodeType": "IndexAccess",
-                          "src": "2966:50:13",
+                          "src": "3018:50:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_TicketStruct_$2534_storage",
                             "typeString": "struct ITicket.TicketStruct storage ref"
                           }
                         },
-                        "id": 2729,
+                        "id": 2734,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
-                        "memberLocation": "3017:6:13",
+                        "memberLocation": "3069:6:13",
                         "memberName": "is_set",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 2533,
-                        "src": "2966:57:13",
+                        "src": "3018:57:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -2747,14 +2818,14 @@
                       },
                       {
                         "hexValue": "5469636b657420646f6573206e6f74206578697374",
-                        "id": 2730,
+                        "id": 2735,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "3037:23:13",
+                        "src": "3089:23:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_6e6f881daf5493586c926ea43bd0ebb26ff4526882566b22789a554ce14dd04a",
                           "typeString": "literal_string \"Ticket does not exist\""
@@ -2773,7 +2844,7 @@
                           "typeString": "literal_string \"Ticket does not exist\""
                         }
                       ],
-                      "id": 2721,
+                      "id": 2726,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -2781,13 +2852,13 @@
                         4294967278
                       ],
                       "referencedDeclaration": 4294967278,
-                      "src": "2945:7:13",
+                      "src": "2997:7:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 2731,
+                    "id": 2736,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2796,16 +2867,16 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2945:125:13",
+                    "src": "2997:125:13",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2732,
+                  "id": 2737,
                   "nodeType": "ExpressionStatement",
-                  "src": "2945:125:13"
+                  "src": "2997:125:13"
                 },
                 {
                   "expression": {
@@ -2815,7 +2886,7 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 2742,
+                        "id": 2744,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -2823,69 +2894,24 @@
                         "leftExpression": {
                           "arguments": [
                             {
-                              "arguments": [
-                                {
-                                  "id": 2737,
-                                  "name": "this",
-                                  "nodeType": "Identifier",
-                                  "overloadedDeclarations": [],
-                                  "referencedDeclaration": 4294967268,
-                                  "src": "3119:4:13",
-                                  "typeDescriptions": {
-                                    "typeIdentifier": "t_contract$_Ticket_$2814",
-                                    "typeString": "contract Ticket"
-                                  }
-                                }
-                              ],
-                              "expression": {
-                                "argumentTypes": [
-                                  {
-                                    "typeIdentifier": "t_contract$_Ticket_$2814",
-                                    "typeString": "contract Ticket"
-                                  }
-                                ],
-                                "id": 2736,
-                                "isConstant": false,
-                                "isLValue": false,
-                                "isPure": true,
-                                "lValueRequested": false,
-                                "nodeType": "ElementaryTypeNameExpression",
-                                "src": "3111:7:13",
-                                "typeDescriptions": {
-                                  "typeIdentifier": "t_type$_t_address_$",
-                                  "typeString": "type(address)"
-                                },
-                                "typeName": {
-                                  "id": 2735,
-                                  "name": "address",
-                                  "nodeType": "ElementaryTypeName",
-                                  "src": "3111:7:13",
-                                  "typeDescriptions": {}
-                                }
-                              },
-                              "id": 2738,
-                              "isConstant": false,
-                              "isLValue": false,
-                              "isPure": false,
-                              "kind": "typeConversion",
-                              "lValueRequested": false,
-                              "nameLocations": [],
-                              "names": [],
-                              "nodeType": "FunctionCall",
-                              "src": "3111:13:13",
-                              "tryCall": false,
+                              "id": 2740,
+                              "name": "_organizer_address",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2717,
+                              "src": "3163:18:13",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
                               }
                             },
                             {
-                              "id": 2739,
+                              "id": 2741,
                               "name": "_ticket_id",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 2716,
-                              "src": "3126:10:13",
+                              "referencedDeclaration": 2721,
+                              "src": "3183:10:13",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -2903,18 +2929,18 @@
                                 "typeString": "uint256"
                               }
                             ],
-                            "id": 2734,
+                            "id": 2739,
                             "name": "balanceOf",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 433,
-                            "src": "3101:9:13",
+                            "src": "3153:9:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_view$_t_address_$_t_uint256_$returns$_t_uint256_$",
                               "typeString": "function (address,uint256) view returns (uint256)"
                             }
                           },
-                          "id": 2740,
+                          "id": 2742,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -2923,7 +2949,7 @@
                           "nameLocations": [],
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "3101:36:13",
+                          "src": "3153:41:13",
                           "tryCall": false,
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -2934,21 +2960,21 @@
                         "operator": ">",
                         "rightExpression": {
                           "hexValue": "30",
-                          "id": 2741,
+                          "id": 2743,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
                           "kind": "number",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "3140:1:13",
+                          "src": "3197:1:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_rational_0_by_1",
                             "typeString": "int_const 0"
                           },
                           "value": "0"
                         },
-                        "src": "3101:40:13",
+                        "src": "3153:45:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -2956,14 +2982,14 @@
                       },
                       {
                         "hexValue": "4e6f207469636b65747320617661696c61626c65",
-                        "id": 2743,
+                        "id": 2745,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "3155:22:13",
+                        "src": "3212:22:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_fbc089c58edaa72a4ebcc58f5fa922936f41a97f8c0318a79d081f4a69a94848",
                           "typeString": "literal_string \"No tickets available\""
@@ -2982,7 +3008,7 @@
                           "typeString": "literal_string \"No tickets available\""
                         }
                       ],
-                      "id": 2733,
+                      "id": 2738,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -2990,13 +3016,13 @@
                         4294967278
                       ],
                       "referencedDeclaration": 4294967278,
-                      "src": "3080:7:13",
+                      "src": "3132:7:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 2744,
+                    "id": 2746,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3005,31 +3031,153 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "3080:107:13",
+                    "src": "3132:112:13",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2745,
+                  "id": 2747,
                   "nodeType": "ExpressionStatement",
-                  "src": "3080:107:13"
+                  "src": "3132:112:13"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 2752,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "id": 2749,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4294967281,
+                            "src": "3275:3:13",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 2750,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "3279:6:13",
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "src": "3275:10:13",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "id": 2751,
+                          "name": "_organizer_address",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2717,
+                          "src": "3289:18:13",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "3275:32:13",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "42757965722073686f756c64206e6f7420626520746865204f7267616e697a6572",
+                        "id": 2753,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "3321:35:13",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_de2efc908dd8100430410389a180b233cf615cad12954cbf0de7a1d35358ef34",
+                          "typeString": "literal_string \"Buyer should not be the Organizer\""
+                        },
+                        "value": "Buyer should not be the Organizer"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_de2efc908dd8100430410389a180b233cf615cad12954cbf0de7a1d35358ef34",
+                          "typeString": "literal_string \"Buyer should not be the Organizer\""
+                        }
+                      ],
+                      "id": 2748,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "3254:7:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 2754,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3254:112:13",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2755,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3254:112:13"
                 },
                 {
                   "assignments": [
-                    2747
+                    2757
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 2747,
+                      "id": 2757,
                       "mutability": "mutable",
                       "name": "total_price",
-                      "nameLocation": "3379:11:13",
+                      "nameLocation": "3558:11:13",
                       "nodeType": "VariableDeclaration",
-                      "scope": 2796,
-                      "src": "3371:19:13",
+                      "scope": 2803,
+                      "src": "3550:19:13",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -3037,10 +3185,10 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
-                        "id": 2746,
+                        "id": 2756,
                         "name": "uint256",
                         "nodeType": "ElementaryTypeName",
-                        "src": "3371:7:13",
+                        "src": "3550:7:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -3049,24 +3197,24 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 2758,
+                  "id": 2768,
                   "initialValue": {
                     "commonType": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 2757,
+                    "id": 2767,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 2748,
+                      "id": 2758,
                       "name": "_quantity",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2718,
-                      "src": "3393:9:13",
+                      "referencedDeclaration": 2723,
+                      "src": "3572:9:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -3079,25 +3227,25 @@
                         "baseExpression": {
                           "baseExpression": {
                             "baseExpression": {
-                              "id": 2749,
+                              "id": 2759,
                               "name": "tickets",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 2584,
-                              "src": "3417:7:13",
+                              "referencedDeclaration": 2591,
+                              "src": "3596:7:13",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_struct$_TicketStruct_$2534_storage_$_$_$",
                                 "typeString": "mapping(address => mapping(uint256 => mapping(uint256 => struct ITicket.TicketStruct storage ref)))"
                               }
                             },
-                            "id": 2751,
+                            "id": 2761,
                             "indexExpression": {
-                              "id": 2750,
+                              "id": 2760,
                               "name": "_organizer_address",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 2712,
-                              "src": "3425:18:13",
+                              "referencedDeclaration": 2717,
+                              "src": "3604:18:13",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -3108,20 +3256,20 @@
                             "isPure": false,
                             "lValueRequested": false,
                             "nodeType": "IndexAccess",
-                            "src": "3417:27:13",
+                            "src": "3596:27:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_struct$_TicketStruct_$2534_storage_$_$",
                               "typeString": "mapping(uint256 => mapping(uint256 => struct ITicket.TicketStruct storage ref))"
                             }
                           },
-                          "id": 2753,
+                          "id": 2763,
                           "indexExpression": {
-                            "id": 2752,
+                            "id": 2762,
                             "name": "_event_id",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2714,
-                            "src": "3445:9:13",
+                            "referencedDeclaration": 2719,
+                            "src": "3624:9:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -3132,20 +3280,20 @@
                           "isPure": false,
                           "lValueRequested": false,
                           "nodeType": "IndexAccess",
-                          "src": "3417:38:13",
+                          "src": "3596:38:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_TicketStruct_$2534_storage_$",
                             "typeString": "mapping(uint256 => struct ITicket.TicketStruct storage ref)"
                           }
                         },
-                        "id": 2755,
+                        "id": 2765,
                         "indexExpression": {
-                          "id": 2754,
+                          "id": 2764,
                           "name": "_ticket_id",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2716,
-                          "src": "3456:10:13",
+                          "referencedDeclaration": 2721,
+                          "src": "3635:10:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -3156,35 +3304,35 @@
                         "isPure": false,
                         "lValueRequested": false,
                         "nodeType": "IndexAccess",
-                        "src": "3417:50:13",
+                        "src": "3596:50:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_TicketStruct_$2534_storage",
                           "typeString": "struct ITicket.TicketStruct storage ref"
                         }
                       },
-                      "id": 2756,
+                      "id": 2766,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
-                      "memberLocation": "3468:5:13",
+                      "memberLocation": "3647:5:13",
                       "memberName": "price",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2531,
-                      "src": "3417:56:13",
+                      "src": "3596:56:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "3393:80:13",
+                    "src": "3572:80:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "3371:102:13"
+                  "src": "3550:102:13"
                 },
                 {
                   "expression": {
@@ -3194,7 +3342,7 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 2764,
+                        "id": 2774,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -3202,40 +3350,40 @@
                         "leftExpression": {
                           "expression": {
                             "expression": {
-                              "id": 2760,
+                              "id": 2770,
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 4294967281,
-                              "src": "3491:3:13",
+                              "src": "3670:3:13",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
                                 "typeString": "msg"
                               }
                             },
-                            "id": 2761,
+                            "id": 2771,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
-                            "memberLocation": "3495:6:13",
+                            "memberLocation": "3674:6:13",
                             "memberName": "sender",
                             "nodeType": "MemberAccess",
-                            "src": "3491:10:13",
+                            "src": "3670:10:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
                             }
                           },
-                          "id": 2762,
+                          "id": 2772,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
-                          "memberLocation": "3502:7:13",
+                          "memberLocation": "3681:7:13",
                           "memberName": "balance",
                           "nodeType": "MemberAccess",
-                          "src": "3491:18:13",
+                          "src": "3670:18:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -3244,18 +3392,18 @@
                         "nodeType": "BinaryOperation",
                         "operator": ">=",
                         "rightExpression": {
-                          "id": 2763,
+                          "id": 2773,
                           "name": "total_price",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2747,
-                          "src": "3513:11:13",
+                          "referencedDeclaration": 2757,
+                          "src": "3692:11:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "src": "3491:33:13",
+                        "src": "3670:33:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -3263,14 +3411,14 @@
                       },
                       {
                         "hexValue": "42757965722062616c616e636520746f6f206c6f77",
-                        "id": 2765,
+                        "id": 2775,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "3526:23:13",
+                        "src": "3705:23:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_f06d2464faf23c4ebf03d3542f315decdeabf2c9c62029e0b32e832bfc7898cd",
                           "typeString": "literal_string \"Buyer balance too low\""
@@ -3289,7 +3437,7 @@
                           "typeString": "literal_string \"Buyer balance too low\""
                         }
                       ],
-                      "id": 2759,
+                      "id": 2769,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -3297,13 +3445,13 @@
                         4294967278
                       ],
                       "referencedDeclaration": 4294967278,
-                      "src": "3483:7:13",
+                      "src": "3662:7:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 2766,
+                    "id": 2776,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3312,16 +3460,16 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "3483:67:13",
+                    "src": "3662:67:13",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2767,
+                  "id": 2777,
                   "nodeType": "ExpressionStatement",
-                  "src": "3483:67:13"
+                  "src": "3662:67:13"
                 },
                 {
                   "expression": {
@@ -3331,33 +3479,33 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 2772,
+                        "id": 2782,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "expression": {
-                            "id": 2769,
+                            "id": 2779,
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 4294967281,
-                            "src": "3568:3:13",
+                            "src": "3747:3:13",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
                               "typeString": "msg"
                             }
                           },
-                          "id": 2770,
+                          "id": 2780,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
-                          "memberLocation": "3572:5:13",
+                          "memberLocation": "3751:5:13",
                           "memberName": "value",
                           "nodeType": "MemberAccess",
-                          "src": "3568:9:13",
+                          "src": "3747:9:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -3366,18 +3514,18 @@
                         "nodeType": "BinaryOperation",
                         "operator": "==",
                         "rightExpression": {
-                          "id": 2771,
+                          "id": 2781,
                           "name": "total_price",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2747,
-                          "src": "3581:11:13",
+                          "referencedDeclaration": 2757,
+                          "src": "3760:11:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "src": "3568:24:13",
+                        "src": "3747:24:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -3385,14 +3533,14 @@
                       },
                       {
                         "hexValue": "57726f6e67207061796d656e7420616d6f756e74",
-                        "id": 2773,
+                        "id": 2783,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "3594:22:13",
+                        "src": "3773:22:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_f14a1a2aceba8c021eb6f6d63bc22df2bfbebf0c2580004d4ea7f0e679c2f8a8",
                           "typeString": "literal_string \"Wrong payment amount\""
@@ -3411,7 +3559,7 @@
                           "typeString": "literal_string \"Wrong payment amount\""
                         }
                       ],
-                      "id": 2768,
+                      "id": 2778,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -3419,13 +3567,13 @@
                         4294967278
                       ],
                       "referencedDeclaration": 4294967278,
-                      "src": "3560:7:13",
+                      "src": "3739:7:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 2774,
+                    "id": 2784,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3434,72 +3582,27 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "3560:57:13",
+                    "src": "3739:57:13",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2775,
+                  "id": 2785,
                   "nodeType": "ExpressionStatement",
-                  "src": "3560:57:13"
+                  "src": "3739:57:13"
                 },
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "arguments": [
-                          {
-                            "id": 2779,
-                            "name": "this",
-                            "nodeType": "Identifier",
-                            "overloadedDeclarations": [],
-                            "referencedDeclaration": 4294967268,
-                            "src": "3653:4:13",
-                            "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_Ticket_$2814",
-                              "typeString": "contract Ticket"
-                            }
-                          }
-                        ],
-                        "expression": {
-                          "argumentTypes": [
-                            {
-                              "typeIdentifier": "t_contract$_Ticket_$2814",
-                              "typeString": "contract Ticket"
-                            }
-                          ],
-                          "id": 2778,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": true,
-                          "lValueRequested": false,
-                          "nodeType": "ElementaryTypeNameExpression",
-                          "src": "3645:7:13",
-                          "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_address_$",
-                            "typeString": "type(address)"
-                          },
-                          "typeName": {
-                            "id": 2777,
-                            "name": "address",
-                            "nodeType": "ElementaryTypeName",
-                            "src": "3645:7:13",
-                            "typeDescriptions": {}
-                          }
-                        },
-                        "id": 2780,
-                        "isConstant": false,
-                        "isLValue": false,
-                        "isPure": false,
-                        "kind": "typeConversion",
-                        "lValueRequested": false,
-                        "nameLocations": [],
-                        "names": [],
-                        "nodeType": "FunctionCall",
-                        "src": "3645:13:13",
-                        "tryCall": false,
+                        "id": 2787,
+                        "name": "_organizer_address",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2717,
+                        "src": "3837:18:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -3507,50 +3610,50 @@
                       },
                       {
                         "expression": {
-                          "id": 2781,
+                          "id": 2788,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 4294967281,
-                          "src": "3660:3:13",
+                          "src": "3869:3:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2782,
+                        "id": 2789,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
-                        "memberLocation": "3664:6:13",
+                        "memberLocation": "3873:6:13",
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
-                        "src": "3660:10:13",
+                        "src": "3869:10:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
                         }
                       },
                       {
-                        "id": 2783,
+                        "id": 2790,
                         "name": "_ticket_id",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2716,
-                        "src": "3672:10:13",
+                        "referencedDeclaration": 2721,
+                        "src": "3893:10:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         }
                       },
                       {
-                        "id": 2784,
+                        "id": 2791,
                         "name": "_quantity",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2718,
-                        "src": "3684:9:13",
+                        "referencedDeclaration": 2723,
+                        "src": "3917:9:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -3558,14 +3661,14 @@
                       },
                       {
                         "hexValue": "",
-                        "id": 2785,
+                        "id": 2792,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "3695:2:13",
+                        "src": "3940:2:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
                           "typeString": "literal_string \"\""
@@ -3596,18 +3699,18 @@
                           "typeString": "literal_string \"\""
                         }
                       ],
-                      "id": 2776,
+                      "id": 2786,
                       "name": "_safeTransferFrom",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 727,
-                      "src": "3627:17:13",
+                      "src": "3806:17:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_address_$_t_uint256_$_t_uint256_$_t_bytes_memory_ptr_$returns$__$",
                         "typeString": "function (address,address,uint256,uint256,bytes memory)"
                       }
                     },
-                    "id": 2786,
+                    "id": 2793,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3616,78 +3719,78 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "3627:71:13",
+                    "src": "3806:146:13",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2787,
+                  "id": 2794,
                   "nodeType": "ExpressionStatement",
-                  "src": "3627:71:13"
+                  "src": "3806:146:13"
                 },
                 {
                   "eventCall": {
                     "arguments": [
                       {
                         "expression": {
-                          "id": 2789,
+                          "id": 2796,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 4294967281,
-                          "src": "3727:3:13",
+                          "src": "3981:3:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2790,
+                        "id": 2797,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
-                        "memberLocation": "3731:6:13",
+                        "memberLocation": "3985:6:13",
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
-                        "src": "3727:10:13",
+                        "src": "3981:10:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
                         }
                       },
                       {
-                        "id": 2791,
+                        "id": 2798,
                         "name": "_ticket_id",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2716,
-                        "src": "3739:10:13",
+                        "referencedDeclaration": 2721,
+                        "src": "3993:10:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         }
                       },
                       {
-                        "id": 2792,
+                        "id": 2799,
                         "name": "_quantity",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2718,
-                        "src": "3751:9:13",
+                        "referencedDeclaration": 2723,
+                        "src": "4005:9:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         }
                       },
                       {
-                        "id": 2793,
+                        "id": 2800,
                         "name": "total_price",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2747,
-                        "src": "3762:11:13",
+                        "referencedDeclaration": 2757,
+                        "src": "4016:11:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -3713,18 +3816,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 2788,
+                      "id": 2795,
                       "name": "TicketBought",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2612,
-                      "src": "3714:12:13",
+                      "referencedDeclaration": 2619,
+                      "src": "3968:12:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_uint256_$_t_uint256_$_t_uint256_$returns$__$",
                         "typeString": "function (address,uint256,uint256,uint256)"
                       }
                     },
-                    "id": 2794,
+                    "id": 2801,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3733,40 +3836,40 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "3714:60:13",
+                    "src": "3968:60:13",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2795,
+                  "id": 2802,
                   "nodeType": "EmitStatement",
-                  "src": "3709:65:13"
+                  "src": "3963:65:13"
                 }
               ]
             },
             "functionSelector": "53f59cac",
-            "id": 2797,
+            "id": 2804,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "buy_ticket",
-            "nameLocation": "2783:10:13",
+            "nameLocation": "2835:10:13",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2719,
+              "id": 2724,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2712,
+                  "id": 2717,
                   "mutability": "mutable",
                   "name": "_organizer_address",
-                  "nameLocation": "2811:18:13",
+                  "nameLocation": "2863:18:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2797,
-                  "src": "2803:26:13",
+                  "scope": 2804,
+                  "src": "2855:26:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3774,10 +3877,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2711,
+                    "id": 2716,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2803:7:13",
+                    "src": "2855:7:13",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -3788,13 +3891,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2714,
+                  "id": 2719,
                   "mutability": "mutable",
                   "name": "_event_id",
-                  "nameLocation": "2847:9:13",
+                  "nameLocation": "2899:9:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2797,
-                  "src": "2839:17:13",
+                  "scope": 2804,
+                  "src": "2891:17:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3802,10 +3905,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2713,
+                    "id": 2718,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2839:7:13",
+                    "src": "2891:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3815,13 +3918,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2716,
+                  "id": 2721,
                   "mutability": "mutable",
                   "name": "_ticket_id",
-                  "nameLocation": "2874:10:13",
+                  "nameLocation": "2926:10:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2797,
-                  "src": "2866:18:13",
+                  "scope": 2804,
+                  "src": "2918:18:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3829,10 +3932,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2715,
+                    "id": 2720,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2866:7:13",
+                    "src": "2918:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3842,13 +3945,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2718,
+                  "id": 2723,
                   "mutability": "mutable",
                   "name": "_quantity",
-                  "nameLocation": "2902:9:13",
+                  "nameLocation": "2954:9:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2797,
-                  "src": "2894:17:13",
+                  "scope": 2804,
+                  "src": "2946:17:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3856,10 +3959,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2717,
+                    "id": 2722,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2894:7:13",
+                    "src": "2946:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3868,96 +3971,51 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2793:124:13"
+              "src": "2845:124:13"
             },
             "returnParameters": {
-              "id": 2720,
+              "id": 2725,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2935:0:13"
+              "src": "2987:0:13"
             },
-            "scope": 2814,
-            "src": "2774:1007:13",
+            "scope": 2829,
+            "src": "2826:1209:13",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "baseFunctions": [
-              2563
+              2565
             ],
             "body": {
-              "id": 2812,
+              "id": 2818,
               "nodeType": "Block",
-              "src": "3894:60:13",
+              "src": "4176:65:13",
               "statements": [
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "arguments": [
-                          {
-                            "id": 2807,
-                            "name": "this",
-                            "nodeType": "Identifier",
-                            "overloadedDeclarations": [],
-                            "referencedDeclaration": 4294967268,
-                            "src": "3929:4:13",
-                            "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_Ticket_$2814",
-                              "typeString": "contract Ticket"
-                            }
-                          }
-                        ],
-                        "expression": {
-                          "argumentTypes": [
-                            {
-                              "typeIdentifier": "t_contract$_Ticket_$2814",
-                              "typeString": "contract Ticket"
-                            }
-                          ],
-                          "id": 2806,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": true,
-                          "lValueRequested": false,
-                          "nodeType": "ElementaryTypeNameExpression",
-                          "src": "3921:7:13",
-                          "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_address_$",
-                            "typeString": "type(address)"
-                          },
-                          "typeName": {
-                            "id": 2805,
-                            "name": "address",
-                            "nodeType": "ElementaryTypeName",
-                            "src": "3921:7:13",
-                            "typeDescriptions": {}
-                          }
-                        },
-                        "id": 2808,
-                        "isConstant": false,
-                        "isLValue": false,
-                        "isPure": false,
-                        "kind": "typeConversion",
-                        "lValueRequested": false,
-                        "nameLocations": [],
-                        "names": [],
-                        "nodeType": "FunctionCall",
-                        "src": "3921:13:13",
-                        "tryCall": false,
+                        "id": 2814,
+                        "name": "_organizer_address",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2806,
+                        "src": "4203:18:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
                         }
                       },
                       {
-                        "id": 2809,
+                        "id": 2815,
                         "name": "_ticket_id",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2799,
-                        "src": "3936:10:13",
+                        "referencedDeclaration": 2808,
+                        "src": "4223:10:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -3975,18 +4033,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 2804,
+                      "id": 2813,
                       "name": "balanceOf",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 433,
-                      "src": "3911:9:13",
+                      "src": "4193:9:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_address_$_t_uint256_$returns$_t_uint256_$",
                         "typeString": "function (address,uint256) view returns (uint256)"
                       }
                     },
-                    "id": 2810,
+                    "id": 2816,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3995,41 +4053,69 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "3911:36:13",
+                    "src": "4193:41:13",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 2803,
-                  "id": 2811,
+                  "functionReturnParameters": 2812,
+                  "id": 2817,
                   "nodeType": "Return",
-                  "src": "3904:43:13"
+                  "src": "4186:48:13"
                 }
               ]
             },
-            "functionSelector": "f088b381",
-            "id": 2813,
+            "functionSelector": "af6ae12a",
+            "id": 2819,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "available_tickets",
-            "nameLocation": "3796:17:13",
+            "nameLocation": "4050:17:13",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2800,
+              "id": 2809,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2799,
+                  "id": 2806,
+                  "mutability": "mutable",
+                  "name": "_organizer_address",
+                  "nameLocation": "4076:18:13",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2819,
+                  "src": "4068:26:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2805,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4068:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2808,
                   "mutability": "mutable",
                   "name": "_ticket_id",
-                  "nameLocation": "3822:10:13",
+                  "nameLocation": "4104:10:13",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2813,
-                  "src": "3814:18:13",
+                  "scope": 2819,
+                  "src": "4096:18:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4037,10 +4123,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2798,
+                    "id": 2807,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3814:7:13",
+                    "src": "4096:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -4049,21 +4135,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3813:20:13"
+              "src": "4067:48:13"
             },
             "returnParameters": {
-              "id": 2803,
+              "id": 2812,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2802,
+                  "id": 2811,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2813,
-                  "src": "3881:7:13",
+                  "scope": 2819,
+                  "src": "4163:7:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4071,10 +4157,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2801,
+                    "id": 2810,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3881:7:13",
+                    "src": "4163:7:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -4083,21 +4169,119 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3880:9:13"
+              "src": "4162:9:13"
             },
-            "scope": 2814,
-            "src": "3787:167:13",
+            "scope": 2829,
+            "src": "4041:200:13",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "baseFunctions": [
+              2570
+            ],
+            "body": {
+              "id": 2827,
+              "nodeType": "Block",
+              "src": "4305:42:13",
+              "statements": [
+                {
+                  "expression": {
+                    "expression": {
+                      "id": 2824,
+                      "name": "ticket_list",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2594,
+                      "src": "4322:11:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
+                        "typeString": "uint256[] storage ref"
+                      }
+                    },
+                    "id": 2825,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberLocation": "4334:6:13",
+                    "memberName": "length",
+                    "nodeType": "MemberAccess",
+                    "src": "4322:18:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 2823,
+                  "id": 2826,
+                  "nodeType": "Return",
+                  "src": "4315:25:13"
+                }
+              ]
+            },
+            "functionSelector": "238d17f2",
+            "id": 2828,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tickets_length",
+            "nameLocation": "4256:14:13",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2820,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4270:2:13"
+            },
+            "returnParameters": {
+              "id": 2823,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2822,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2828,
+                  "src": "4296:7:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2821,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4296:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4295:9:13"
+            },
+            "scope": 2829,
+            "src": "4247:100:13",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 2815,
-        "src": "939:3017:13",
+        "scope": 2830,
+        "src": "1031:3318:13",
         "usedErrors": []
       }
     ],
-    "src": "32:3925:13"
+    "src": "32:4318:13"
   },
   "compiler": {
     "name": "solc",
@@ -4105,7 +4289,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2023-01-24T22:36:35.829Z",
+  "updatedAt": "2023-01-28T09:56:21.430Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

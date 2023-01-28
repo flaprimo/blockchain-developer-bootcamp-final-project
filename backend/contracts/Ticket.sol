@@ -28,16 +28,18 @@ interface ITicket {
         uint256 _quantity
     ) external payable;
 
-    function available_tickets(uint256 _ticket_id)
+    function available_tickets(address _organizer_address, uint256 _ticket_id)
         external
         view
         returns (uint256);
+
+    function tickets_length() external view returns (uint256);
 }
 
 contract Ticket is
     Initializable,
-    ERC1155Upgradeable,
     OwnableUpgradeable,
+    ERC1155Upgradeable,
     ITicket
 {
     CountersUpgradeable.Counter ticket_id;
@@ -60,8 +62,6 @@ contract Ticket is
         uint256 _quantity,
         uint256 _price
     );
-
-    // constructor() ERC1155("") {}
 
     function initialize(address _event_contract) public initializer {
         event_contract = IEvent(_event_contract);
@@ -88,7 +88,7 @@ contract Ticket is
         ] = TicketStruct(_name, _price, true);
         ticket_list.push(CountersUpgradeable.current(ticket_id));
         _mint(
-            address(this),
+            msg.sender,
             CountersUpgradeable.current(ticket_id),
             _quantity,
             ""
@@ -114,8 +114,12 @@ contract Ticket is
             "Ticket does not exist"
         );
         require(
-            balanceOf(address(this), _ticket_id) > 0,
+            balanceOf(_organizer_address, _ticket_id) > 0,
             "No tickets available"
+        );
+        require(
+            msg.sender != _organizer_address,
+            "Buyer should not be the Organizer"
         );
         // require(
         //     tickets[_organizer_address][_event_id].start_datetime <
@@ -126,16 +130,26 @@ contract Ticket is
             tickets[_organizer_address][_event_id][_ticket_id].price;
         require(msg.sender.balance >= total_price, "Buyer balance too low");
         require(msg.value == total_price, "Wrong payment amount");
-        _safeTransferFrom(address(this), msg.sender, _ticket_id, _quantity, "");
+        _safeTransferFrom(
+            _organizer_address,
+            msg.sender,
+            _ticket_id,
+            _quantity,
+            ""
+        );
 
         emit TicketBought(msg.sender, _ticket_id, _quantity, total_price);
     }
 
-    function available_tickets(uint256 _ticket_id)
+    function available_tickets(address _organizer_address, uint256 _ticket_id)
         external
         view
         returns (uint256)
     {
-        return balanceOf(address(this), _ticket_id);
+        return balanceOf(_organizer_address, _ticket_id);
+    }
+
+    function tickets_length() external view returns (uint256) {
+        return ticket_list.length;
     }
 }

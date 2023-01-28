@@ -20,6 +20,7 @@ describe("Event", function () {
   });
 
   it("Create Event", async function () {
+    // Create Organizer
     const organizer_admin = this.accounts[0];
     const organizer_name = "Flavio";
     const organizer_description = "The best event organizer";
@@ -29,6 +30,7 @@ describe("Event", function () {
       organizer_description
     );
 
+    // Create Event
     const event_name = "Best concert ever";
     const event_description = "The best concert ever you'll attend to";
     const event_venue_address = "Viale Pietro de Coubertin, 30, Rome";
@@ -46,7 +48,7 @@ describe("Event", function () {
     // check that the event is added to the event_list
     const event_id = await this.Event.event_list(0);
 
-    // check that the event
+    // check that the creation event is fired
     await expectEvent(res2, "EventCreated", {
       _admin: organizer_admin,
       _event_id: event_id,
