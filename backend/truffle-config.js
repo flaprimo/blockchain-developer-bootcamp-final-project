@@ -65,6 +65,11 @@ module.exports = {
     // options below to some value.
     //
     development: {
+      host: "127.0.0.1", // Localhost (default: none)
+      port: 9545, // Standard Ethereum port (default: none)
+      network_id: "5777", // Any network (default: none)
+    },
+    wsl_ganache: {
       host: "172.19.64.1", // Localhost (default: none)
       port: 7545, // Standard Ethereum port (default: none)
       network_id: "5777", // Any network (default: none)
