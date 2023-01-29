@@ -181,7 +181,7 @@ const Nav = () => {
                 ))}
               </div>
               <div className="border-t border-gray-700 pt-4 pb-3">
-                <div className="flex items-center px-5">
+                {/* <div className="flex items-center px-5">
                   <div className="flex-shrink-0">
                     <UserCircleIcon
                       className="block h-10 w-10 text-gray-400 hover:text-white"
@@ -203,7 +203,7 @@ const Nav = () => {
                     <span className="sr-only">View notifications</span>
                     <BellIcon className="h-6 w-6" aria-hidden="true" />
                   </button>
-                </div>
+                </div> */}
                 <div className="mt-3 space-y-1 px-2">
                   {userNavigation.map((item) => (
                     <Disclosure.Button
