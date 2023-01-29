@@ -14,7 +14,7 @@ export default function Home() {
 
   useEffect(() => {
     (async () => {
-      appContext.etherjs.provider.getBalance("").then((balance) => {
+      appContext.etherjs.provider.getBalance("0x52Dc05Bd478471F137bDd4D6Bb5cA12fD52d0DC7").then((balance) => {
         // convert a currency unit from wei to ether
         const balanceInEth = ethers.utils.formatEther(balance);
         console.log(`balance: ${balanceInEth} ETH`);

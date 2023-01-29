@@ -50,10 +50,10 @@ jobs:
           npm run export
         env:
           NEXT_TELEMETRY_DISABLED: 1
-      - name: Copy contracts ABI
-        run: |
-          mkdir frontend/out/contracts
-          mv backend/build/contracts frontend/out/contracts
+      # - name: Copy contracts ABI
+      #   run: |
+      #     mkdir frontend/out/contracts
+      #     mv backend/build/contracts frontend/out/contracts
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

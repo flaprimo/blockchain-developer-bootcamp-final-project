@@ -4,10 +4,11 @@ const AppContext = createContext();
 const AppDispatchContext = createContext();
 
 const initialState = {
-  api: {
-    key: "",
-    network: "goerli",
-    provider: null,
+  sol: {
+    organizer_address: "",
+    organizer_contract: null,
+    event_contract: null,
+    ticket_contract: null,
   },
   etherjs: {
     is_signed: false,
@@ -18,9 +19,11 @@ const initialState = {
 
 function appReducer(state, action) {
   switch (action.type) {
-    case "set_api_configuration": {
-      state.api.key = action.api_key;
-      state.api.network = action.api_network;
+    case "set_sol_configuration": {
+      state.sol.organizer_address = action.sol_organizer_address;
+      state.sol.organizer_contract = action.sol_organizer_contract;
+      state.sol.event_contract = action.sol_event_contract;
+      state.sol.ticket_contract = action.sol_ticket_contract;
 
       return state;
     }
@@ -38,29 +41,6 @@ function appReducer(state, action) {
 
       return state;
     }
-
-    // case "added": {
-    //   return [
-    //     ...state,
-    //     {
-    //       id: action.id,
-    //       text: action.text,
-    //       done: false,
-    //     },
-    //   ];
-    // }
-    // case "changed": {
-    //   return state.map((t) => {
-    //     if (t.id === action.task.id) {
-    //       return action.task;
-    //     } else {
-    //       return t;
-    //     }
-    //   });
-    // }
-    // case "deleted": {
-    //   return state.filter((t) => t.id !== action.id);
-    // }
     default: {
       throw Error("Unknown action: " + action.type);
     }
