@@ -8,7 +8,19 @@ Technologies involved:
 - **Frontend**: Reactjs, Nextjs, TailwindCSS, GitHub pages
 - **CICD**: GitHub Actions
 
-![Frontend index](docs/assets/frontend-index.png)
+# How-To
+
+**Click on the image to watch the video**
+
+[![Watch the how-to video](docs/assets/frontend-index.png)](docs/assets/howto.mp4)
+
+# TODO
+
+- [x] JS/Solidity Tests fully cover all functionalities for creating/listing Organizers, Events and Tickets and buying tickets.
+- [x] Frontend supports Metamask connection and linking to a deployed Organizer Contract
+- [x] Frontend supports Creating and listing Organizers
+- [ ] Frontend supports Creating and listing Events and Tickets
+- [ ] Implement Oracles for buying tickets with fiat currencies
 
 ## Documentation
 
