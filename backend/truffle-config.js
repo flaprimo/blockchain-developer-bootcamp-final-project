@@ -41,10 +41,10 @@
  * https://trufflesuite.com/docs/truffle/getting-started/using-the-truffle-dashboard/
  */
 
-// require('dotenv').config();
-// const { MNEMONIC, PROJECT_ID } = process.env;
+require("dotenv").config();
+const { MNEMONIC, INFURA_PROJECT_ID, ALCHEMY_API_KEY } = process.env;
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require("@truffle/hdwallet-provider");
 
 module.exports = {
   /**
@@ -73,6 +73,28 @@ module.exports = {
       host: "172.19.64.1", // Localhost (default: none)
       port: 7545, // Standard Ethereum port (default: none)
       network_id: "5777", // Any network (default: none)
+    },
+    goerli_alchemy: {
+      provider: () =>
+        new HDWalletProvider(
+          MNEMONIC,
+          `https://eth-goerli.g.alchemy.com/v2/${ALCHEMY_API_KEY}`
+        ),
+      network_id: 5, // Goerli's id
+      // confirmations: 2, // # of confirmations to wait between deployments. (default: 0)
+      // timeoutBlocks: 200, // # of blocks before a deployment times out  (minimum/default: 50)
+      // skipDryRun: true, // Skip dry run before migrations? (default: false for public nets )
+    },
+    goerli_infura: {
+      provider: () =>
+        new HDWalletProvider(
+          MNEMONIC,
+          `https://goerli.infura.io/v3/${INFURA_PROJECT_ID}`
+        ),
+      network_id: 5, // Goerli's id
+      confirmations: 2, // # of confirmations to wait between deployments. (default: 0)
+      timeoutBlocks: 200, // # of blocks before a deployment times out  (minimum/default: 50)
+      skipDryRun: false, // Skip dry run before migrations? (default: false for public nets )
     },
     //
     // An additional network, but with some advanced options…
