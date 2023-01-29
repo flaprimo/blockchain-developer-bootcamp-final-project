@@ -13,7 +13,10 @@ const createOrganizer = async (appContext, name, description) => {
         name,
         description
       );
+      console.log("loading receipt");
       receipt = await wait(current_organizer);
+      console.log("Receipt for contract deployment:");
+      console.log(receipt);
     } catch (err) {
       let error_message = err.data.data.message;
       let error_reason = err.data.data.reason;
@@ -119,9 +122,11 @@ const CreateOrganizerModal = ({ isOpen, setIsOpen }) => {
                             console.log("organizer created successfully!");
                           }
                         })
-                        .catch((reason) =>
-                          console.log("Message:" + reason.message)
-                        );
+                        .catch((reason) => {
+                          console.log(
+                            "Contract not deployed, message:" + reason.message
+                          );
+                        });
                     }}
                   >
                     Save settings

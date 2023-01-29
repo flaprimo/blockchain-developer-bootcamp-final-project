@@ -40,6 +40,12 @@ const getContracts = async (organizer_address, signer) => {
     signer
   );
 
+  try {
+    await contract.provider.getCode(organizerContract.address);
+  } catch (err) {
+    console.log("Could not load contract: " + err);
+  }
+
   return { organizerContract, eventContract, ticketContract };
 };
 
