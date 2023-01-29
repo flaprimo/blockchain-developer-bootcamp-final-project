@@ -8,20 +8,15 @@ const createOrganizer = async (appContext, name, description) => {
   let error_reason = null;
 
   if (organizerContract) {
-    try {
-      const current_organizer = await organizerContract.create_organizer(
-        name,
-        description
-      );
-      console.log("loading receipt");
-      receipt = await wait(current_organizer);
-      console.log("Receipt for contract deployment:");
-      console.log(receipt);
-    } catch (err) {
-      let error_message = err.data.data.message;
-      let error_reason = err.data.data.reason;
-      return { error_message, error_reason };
-    }
+    console.log("Organizer contract defined");
+
+    const current_organizer = await organizerContract.create_organizer(
+      name,
+      description
+    );
+    receipt = await wait(current_organizer);
+    error_message = receipt.data.data.message;
+    error_reason = receipt.data.data.reason;
   }
 
   return { error_message, error_reason };

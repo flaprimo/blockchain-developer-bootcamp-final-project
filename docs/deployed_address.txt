@@ -1,0 +1,228 @@
+Goerli Alchemy network:
+
+Organizer: 0x5011A3749ed722D382aa25f7268454EAf9601720
+Event: 0xB753038FEF52277cB7298a3eA0Ad2876132B37D2
+Ticket: 0xdF8a4E3EF4A65350Cba1658B32D3d2b8182b54f8
+
+Compiling your contracts...
+===========================
+> Everything is up to date, there is nothing to compile.
+
+
+Migrations dry-run (simulation)
+===============================
+> Network name:    'goerli_alchemy-fork'
+> Network id:      5
+> Block gas limit: 30000000 (0x1c9c380)
+
+
+1_contracts_deployer.js
+=======================
+
+   Deploying 'Organizer'
+   ---------------------
+   > block number:        8396956
+   > block timestamp:     1674989124
+   > account:             0x52Dc05Bd478471F137bDd4D6Bb5cA12fD52d0DC7
+   > balance:             0.394027502457463417
+   > gas used:            951466 (0xe84aa)
+   > gas price:           2.500000017 gwei
+   > value sent:          0 ETH
+   > total cost:          0.002378665016174922 ETH
+
+
+   Deploying 'ProxyAdmin'
+   ----------------------
+   > block number:        8396957
+   > block timestamp:     1674989125
+   > account:             0x52Dc05Bd478471F137bDd4D6Bb5cA12fD52d0DC7
+   > balance:             0.392812334949686345
+   > gas used:            486067 (0x76ab3)
+   > gas price:           2.500000016 gwei
+   > value sent:          0 ETH
+   > total cost:          0.001215167507777072 ETH
+
+
+   Deploying 'TransparentUpgradeableProxy'
+   ---------------------------------------
+   > block number:        8396958
+   > block timestamp:     1674989126
+   > account:             0x52Dc05Bd478471F137bDd4D6Bb5cA12fD52d0DC7
+   > balance:             0.39134387244087557
+   > gas used:            587385 (0x8f679)
+   > gas price:           2.500000015 gwei
+   > value sent:          0 ETH
+   > total cost:          0.001468462508810775 ETH
+
+Deployed organizer 0xB753038FEF52277cB7298a3eA0Ad2876132B37D2
+
+   Deploying 'Event'
+   -----------------
+   > block number:        8396959
+   > block timestamp:     1674989127
+   > account:             0x52Dc05Bd478471F137bDd4D6Bb5cA12fD52d0DC7
+   > balance:             0.388008527422197638
+   > gas used:            1334138 (0x145b7a)
+   > gas price:           2.500000014 gwei
+   > value sent:          0 ETH
+   > total cost:          0.003335345018677932 ETH
+
+
+   Deploying 'TransparentUpgradeableProxy'
+   ---------------------------------------
+   > block number:        8396960
+   > block timestamp:     1674989129
+   > account:             0x52Dc05Bd478471F137bDd4D6Bb5cA12fD52d0DC7
+   > balance:             0.386418084913927337
+   > gas used:            636177 (0x9b511)
+   > gas price:           2.500000013 gwei
+   > value sent:          0 ETH
+   > total cost:          0.001590442508270301 ETH
+
+Deployed event 0xdF8a4E3EF4A65350Cba1658B32D3d2b8182b54f8
+
+   Deploying 'Ticket'
+   ------------------
+   > block number:        8396961
+   > block timestamp:     1674989130
+   > account:             0x52Dc05Bd478471F137bDd4D6Bb5cA12fD52d0DC7
+   > balance:             0.377461567370936053
+   > gas used:            3582607 (0x36aa8f)
+   > gas price:           2.500000012 gwei
+   > value sent:          0 ETH
+   > total cost:          0.008956517542991284 ETH
+
+
+   Deploying 'TransparentUpgradeableProxy'
+   ---------------------------------------
+   > block number:        8396962
+   > block timestamp:     1674989132
+   > account:             0x52Dc05Bd478471F137bDd4D6Bb5cA12fD52d0DC7
+   > balance:             0.375862687363900981
+   > gas used:            639552 (0x9c240)
+   > gas price:           2.500000011 gwei
+   > value sent:          0 ETH
+   > total cost:          0.001598880007035072 ETH
+
+Deployed ticket 0xf29a128FC04381969216E8dA1E53A0635522Af42
+   -------------------------------------
+   > Total cost:     0.020543480109737358 ETH
+
+Summary
+=======
+> Total deployments:   7
+> Final cost:          0.020543480109737358 ETH
+
+
+
+
+Starting migrations...
+======================
+> Network name:    'goerli_alchemy'
+> Network id:      5
+> Block gas limit: 30000000 (0x1c9c380)
+
+
+1_contracts_deployer.js
+=======================
+
+   Deploying 'ProxyAdmin'
+   ----------------------
+   > transaction hash:    0x2cbd0c794ae031481829e87fd027321f8ce640a28c6bccc4e91e3d1f8dc3ba51
+   > Blocks: 1            Seconds: 12
+   > contract address:    0x10D3AbD3C5e679bA459A91430a83c899F883DDBA
+   > block number:        8396962
+   > block timestamp:     1674989148
+   > account:             0x52Dc05Bd478471F137bDd4D6Bb5cA12fD52d0DC7
+   > balance:             0.3951909999653752
+   > gas used:            486067 (0x76ab3)
+   > gas price:           2.500000017 gwei
+   > value sent:          0 ETH
+   > total cost:          0.001215167508263139 ETH
+
+
+   Deploying 'TransparentUpgradeableProxy'
+   ---------------------------------------
+   > transaction hash:    0x03392bcc2ace9373125031b8525063bfc454727512ce75b8f9a7dc14fb5b1fd7
+   > Blocks: 1            Seconds: 32
+   > contract address:    0xC2Ff53531F596A9a1282EEe9313b9E181C7d33A2
+   > block number:        8396964
+   > block timestamp:     1674989184
+   > account:             0x52Dc05Bd478471F137bDd4D6Bb5cA12fD52d0DC7
+   > balance:             0.39372253745597704
+   > gas used:            587385 (0x8f679)
+   > gas price:           2.500000016 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00146846250939816 ETH
+
+Deployed organizer 0xC2Ff53531F596A9a1282EEe9313b9E181C7d33A2
+
+   Deploying 'Event'
+   -----------------
+   > transaction hash:    0x14021cc7e529dc84f8d0b3ab51cfc8517ef3d707b3da427c0529720a9fc719d6
+   > Blocks: 1            Seconds: 8
+   > contract address:    0xB753038FEF52277cB7298a3eA0Ad2876132B37D2
+   > block number:        8396965
+   > block timestamp:     1674989196
+   > account:             0x52Dc05Bd478471F137bDd4D6Bb5cA12fD52d0DC7
+   > balance:             0.390387192433296694
+   > gas used:            1334138 (0x145b7a)
+   > gas price:           2.500000017 gwei
+   > value sent:          0 ETH
+   > total cost:          0.003335345022680346 ETH
+
+
+   Deploying 'TransparentUpgradeableProxy'
+   ---------------------------------------
+   > transaction hash:    0x2ae047d3529c0ffac4d80a215504e33fb9a462a4d005cdd3441e97fdc20307c8
+   > Blocks: 2            Seconds: 20
+   > contract address:    0x7A1Accdc5039422B093Bc0867a8e5923F50d8E04
+   > block number:        8396967
+   > block timestamp:     1674989220
+   > account:             0x52Dc05Bd478471F137bDd4D6Bb5cA12fD52d0DC7
+   > balance:             0.388796749923117862
+   > gas used:            636177 (0x9b511)
+   > gas price:           2.500000016 gwei
+   > value sent:          0 ETH
+   > total cost:          0.001590442510178832 ETH
+
+Deployed event 0x7A1Accdc5039422B093Bc0867a8e5923F50d8E04
+
+   Deploying 'Ticket'
+   ------------------
+   > transaction hash:    0x6f5abfc0d069a027d02b35bd503405885ea2da63cd147f0649bef7b18dcd5bb4
+   > Blocks: 1            Seconds: 8
+   > contract address:    0xdF8a4E3EF4A65350Cba1658B32D3d2b8182b54f8
+   > block number:        8396968
+   > block timestamp:     1674989232
+   > account:             0x52Dc05Bd478471F137bDd4D6Bb5cA12fD52d0DC7
+   > balance:             0.37984023236579615
+   > gas used:            3582607 (0x36aa8f)
+   > gas price:           2.500000016 gwei
+   > value sent:          0 ETH
+   > total cost:          0.008956517557321712 ETH
+
+
+   Deploying 'TransparentUpgradeableProxy'
+   ---------------------------------------
+   > transaction hash:    0x44ce7dc06ad94ff1b1b5066a3bec3ed7427c8ec3ac6e7276754be4c653a2b5e8
+   > Blocks: 1            Seconds: 8
+   > contract address:    0x5773b94E0AaAbBBaa26BE1b9DDA3DD844c3999aF
+   > block number:        8396969
+   > block timestamp:     1674989244
+   > account:             0x52Dc05Bd478471F137bDd4D6Bb5cA12fD52d0DC7
+   > balance:             0.378241352355563318
+   > gas used:            639552 (0x9c240)
+   > gas price:           2.500000016 gwei
+   > value sent:          0 ETH
+   > total cost:          0.001598880010232832 ETH
+
+Deployed ticket 0x5773b94E0AaAbBBaa26BE1b9DDA3DD844c3999aF
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.018164815118075021 ETH
+
+Summary
+=======
+> Total deployments:   6
+> Final cost:          0.018164815118075021 ETH
