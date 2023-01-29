@@ -10,9 +10,7 @@ Technologies involved:
 
 # How-To
 
-**Click on the image to watch the video**
-
-[![Watch the how-to video](docs/assets/frontend-index.png)](docs/assets/howto.mp4)
+https://github.com/flaprimo/blockchain-developer-bootcamp-final-project/blob/dev/docs/assets/howto.mp4
 
 # TODO
 
