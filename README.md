@@ -8,9 +8,13 @@ Technologies involved:
 - **Frontend**: Reactjs, Nextjs, TailwindCSS, GitHub pages
 - **CICD**: GitHub Actions
 
+![Landing page](docs/assets/frontend-index.png)
 # How-To
 
 https://github.com/flaprimo/blockchain-developer-bootcamp-final-project/blob/dev/docs/assets/howto.mp4
+
+Results of the interaction:
+![Test transaction](docs/assets/test_transaction.png)
 
 # TODO
 
