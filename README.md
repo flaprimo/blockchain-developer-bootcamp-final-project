@@ -15,6 +15,7 @@ https://github.com/flaprimo/blockchain-developer-bootcamp-final-project/blob/dev
 # TODO
 
 - [x] JS/Solidity Tests fully cover all functionalities for creating/listing Organizers, Events and Tickets and buying tickets.
+- [x] Contracts successfully deployed on Goerli Ethereum network (Etherscan links: [Organizer](https://goerli.etherscan.io/address/0x5011A3749ed722D382aa25f7268454EAf9601720), [Event](https://goerli.etherscan.io/address/0xB753038FEF52277cB7298a3eA0Ad2876132B37D2), [Ticket](https://goerli.etherscan.io/address/0xdF8a4E3EF4A65350Cba1658B32D3d2b8182b54f8))
 - [x] Frontend supports Metamask connection and linking to a deployed Organizer Contract
 - [x] Frontend supports Creating and listing Organizers
 - [ ] Frontend supports Creating and listing Events and Tickets
